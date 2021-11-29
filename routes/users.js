@@ -20,12 +20,21 @@ const client = new MongoClient(url) // mongodb client
  * Returning all users listed in the database. If there is no entry, it returns an empty JSON object.
  */
 router.get('/', function (req, res, next) {
-    res.json({
-        'message': true
-    })
-    res.send();
-});
+    client.connect(function(err) 
+  {
+    assert.strictEqual(null, err);
+  
+    const db = client.db(dbName); //Database
+    const collection = db.collection(collectionName); //Collection
 
+    // Find all documents
+    collection.find({}).toArray(function(err, docs) 
+    {
+      assert.strictEqual(err, null);
+      res.json(docs); //return documents from Database
+    })
+  })
+});
 
 /**
  * Create a new user
@@ -38,14 +47,35 @@ router.get('/', function (req, res, next) {
  * }} 
  */
 router.post('/create', (req, res, next) => {
-    res.status(200);
-    res.json({
-        status:"ok",
-        body: req.body
-    })
-    
-    res.send()
+    let user = {}
+    user.username = "Max Mustermann"
+    user.email = "max@mustermann.de"
+    user.password = "1234567890"
+    user.phonenumber= "01575123456"
 
+    // connect to the mongodb database and afterwards, insert one the new element
+    client.connect(function(err) 
+    {
+      assert.equal(null, err)
+    
+      console.log('Connected successfully to server')
+    
+      const db = client.db(dbName)
+      const collection = db.collection(collectionName)
+
+      // Insert the document in the database
+      collection.insertOne(user, function(err, result) 
+      {
+        assert.equal(err, null)
+        assert.equal(1, result.result.ok)
+        console.log(`Inserted ${result.insertedCount} document into the collection`)
+      })
+      
+    })
+    res.json({
+        'message': true
+    })
+    res.send();
 })
 
 /**
@@ -59,48 +89,84 @@ router.post('/create', (req, res, next) => {
  * }} 
  */
 router.post('/modify',(req,res,next) =>{
-    res.status(200);
-    res.json({
-        status:"ok",
-        body: req.body
+    client.connect(function(err)
+    {
+      console.log("connected succesful")
+      assert.strictEqual(null, err)
+      const db = client.db(dbName) //database
+      const collection = db.collection(collectionName) //collection
+      collection.find({username: "Max Mustermann"}).toArray(function(err, docs)
+      {
+
+        assert.strictEqual(err, null);
+        // checks if not 0
+        if(docs.length > 0) {
+            //Update the document in the database
+            collection.updateOne({username: "Max Mustermann"}, {$set:{email: "max@maus.de",password:"Helloworld", phonenumber:"987654321"}}, function(err, result)
+            {
+              assert.strictEqual(err, null)
+              assert.strictEqual(1, result.result.ok)
+            })
+            res.json({
+                'message': true
+                })
+                res.send();
+        }
+        else {
+            res.json({
+                'message': false
+                })
+                res.send();
+        }
+      })
     })
-    
-    res.send()
 
 })
 
 module.exports = router;
 
+/**
+ * Delete an existing user
+ * Requirements for an successfull request:
+ * {@code {
+ *    "username":String,
+ *    "email":String,
+ *    "password":String,
+ *    "phonenumber":String,
+ * }} 
+ */
 router.post('/delete', function(req, res, next)
 {
-    /*client.connect(function(err)
+    client.connect(function(err)
     {
-        console.log('Connected successfully to server')
         const db = client.db(dbName)
         const collection = db.collection(collectionName)
-        var userToDelete = req.body.userToDelete;
-        
-        collection.find({userToDelete: userToDelete}).toArray(function(err, docs)
-        {      
-            if(docs.length >= 1){ //check if user exists
-                collection.deleteOne({userToDelete: userToDelete}, function(err, results){ //delte the user from the collection
+        //check if number exists
+        collection.find({username: "Max Mustermann"}).toArray(function(err, docs)
+        {
+            assert.strictEqual(err, null)
+            // if document exists, delete it
+            if(docs.length >0){
+                assert.strictEqual(null, err);
+
+                //delete Document
+                collection.deleteOne({username: "Max Mustermann"}, function(err, results){
+                    assert.strictEqual(err, null)
                 })
-                res.send()
+
+                res.json({
+                'message': true
+                })
+                res.send();
             }
-            else { //if the user does not exist
-                res.send()
+            // if something fails, redirect
+            else {
+                res.json({
+                    'message': false
+                })
+                res.send();
             }
-            
         })
-
-    })*/
-    res.status(200);
-    res.json({
-        status:"ok",
-        body: req.body
     })
-    
-    res.send()
-
 })
 module.exports = router; //export as router
