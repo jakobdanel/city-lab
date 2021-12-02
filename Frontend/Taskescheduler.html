@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+
+    </head>
+<body>
+  <!--Navigation bar-->
+<div id="nav-placeholder">
+
+</div>
+
+<script>
+$(function(){
+  $("#nav-placeholder").load("nav.html");
+});
+</script>
+<!--end of Navigation bar-->
+
+  
+  <h1>Task Scheduler</h1>
+    <form>
+      <div class="input-row">
+        <label for="task">Task</label>
+        <input type="text" name="task" id="task" />
+      </div>
+      <div class="input-row">
+        <label for="assignee">Assignee</label>
+        <input type="text" name="assignee" id="assignee" />
+      </div>
+      <div class="input-row">
+        <label for="until">Until</label>
+        <input type="text" name="until" id="until" />
+      </div>
+      <button>Submit</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Assignee</th>
+          <th>Until</th>
+
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+
+    
+    <!-- local script Ressources-->
+    <script src="taskscheduler_table.js"></script>
+    <link rel="stylesheet" href="style.css" />
+</body>
+</html>

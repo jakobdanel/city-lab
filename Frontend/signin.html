@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <!--external script resources-->
+    <!--leaflet-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+  <!--Leaflet draw-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
+  <!--jqery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>  
+
+
+</head>
+<body>
+
+   
+    <div class="loginbox">
+    <img src="avatar_icon.png" class="avatar">
+        <h1>Login Here</h1>
+        <form>
+            <p>Username</p>
+            <input type="text" name="" placeholder="Enter Username">
+            <p>Password</p>
+            <input type="password" name="" placeholder="Enter Password">
+            <input type="submit" name="" value="Login">
+            <a href="#">Lost your password?</a><br>
+            <a href="#">Join a community</a>
+            
+
+
+        </form>
+
+    </div>
+    <div id="startmap" style="width: 30%; height: 50%; position:fixed"></div>
+    
+    <!-- local script Ressources-->
+    <!---->
+    <script src="jquery_wetter.js"></script>
+    <script src="wetterkey.js"></script>
+    
+    <script src="startmap.js"></script>
+ 
+    <link rel="stylesheet" href="style.css" />
+
+</body>
+</html>
