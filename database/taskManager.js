@@ -45,7 +45,7 @@ async function getOneTask(id) {
 }
 
 /**
- * These function create a new Task. It will validate if the input parameters are valid. The user and modifier id must exist in the users
+ * This function create a new Task. It will validate if the input parameters are valid. The user and modifier id must exist in the users
  * collection. The taskName must be a String and can not be zero. The details musst exist, but can be empty. The until parameter is a String which
  * can not be empty.
  * 
@@ -128,7 +128,7 @@ async function getUserToTask(task) {
 }
 
 /**
- * Extending the task objectss with the objects from the User with the Id given in the parameter. Both user and modifier will be extended. 
+ * Extending the task objects with the objects from the User with the Id given in the parameter. Both user and modifier will be extended. 
  * @param {{{taskName:String,user: ObjectID,details:String,until:String,modifier:ObjectID}[]}} task 
  * @returns The extended object with the user information as an array
  */

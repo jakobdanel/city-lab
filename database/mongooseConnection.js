@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 
 
 /**
- * These function work as a wrapper for the processing function, it checking that the connection to mongoose is hold, until the processing function
+ * This function works as a wrapper for the processing function, it is checking that the connection to mongoose is hold, until the processing function
  * is done. After that it closes the connection to mongoose and returning the result of the processing function.
  * @param {Function} processingFunction These function will be called in the moment where a connection to MongoDb is build. Usse async/await to let the
  * processingFunction wait until there work is done.
