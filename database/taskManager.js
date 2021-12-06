@@ -1,20 +1,18 @@
-const User = require('./schema/userSchema.js');
+const {userSchema,userModel} = require('./schema/userSchema.js');
 const Task = require('./schema/taskSchema.js');
 
 const {
     mongooseInteraction
 } = require('./mongooseConnection');
-const {
-    ObjectID
-} = require('bson');
 
-const jakob = new User({
-    username: 'jdanel',
-    firstName: 'Jakob',
-    lastName: 'Danel',
-    password: '1234',
-    email: 'jakob@test.de'
-})
+// const jakob = new User({
+//     username: 'jdanel',
+//     firstName: 'Jakob',
+//     lastName: 'Danel',
+//     password: '1234',
+//     email: 'jakob@test.de'
+// })
+
 /**
  * An dummy Task Object as testing dummy.
  */
@@ -60,7 +58,7 @@ async function getOneTask(id) {
 async function createTask(taskData) {
     mongooseInteraction(async (args) => {
         //Check if User exists
-        let users = await User.find();
+        let users = await userModel.find();
         let userExist = {
             user: false,
             modifier: false
@@ -75,7 +73,7 @@ async function createTask(taskData) {
             }
         }
         if (!userExist.user) {
-            throw new Error("User doess not exist");
+            throw new Error("User does not exist");
         }
         if (!userExist.modifier) {
             throw new Error("Modifier does not exist");
