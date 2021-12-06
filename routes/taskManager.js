@@ -13,7 +13,15 @@ router.get('/', function (req, res, next) {
     res.send();
 });
 
-
+/**
+ * Returning the entry in the task database with the given id. If there is no entry with these id, the response will return an error message.
+ */
+router.get('/:id', function (paramsreq, res, next) {
+    res.json({
+        id : req.params.id
+    })
+    res.send();
+})
 /**
  * Create a new entry to the task manager database
  * Requirements for an successfull request:
