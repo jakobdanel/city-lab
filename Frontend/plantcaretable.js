@@ -5,14 +5,14 @@ const formEl = document.querySelector("form");
       function onAddtask(e) {
         e.preventDefault();
         const plantname = document.getElementById("plantname").value;
-        const assigneewatering = document.getElementById("assigneewatering").value;
+        const assigneept = document.getElementById("assigneept").value;
         const howtocare = document.getElementById("howtocare").value;
         const description = document.getElementById("description").value;
         
         tbodyEl.innerHTML += `
             <tr>
                 <td>${plantname}</td>
-                <td>${assigneewatering}</td>
+                <td>${assigneept}</td>
                 <td>${howtocare}</td>
                 <td>${description}</td>
                 

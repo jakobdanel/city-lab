@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Roboto", sans-serif;
+    color: #8fcc00;
     
   }
   h1 {
@@ -9,6 +10,7 @@ body {
     padding: 0 0 20px;
     text-align: center;
     font-size: 22px;
+    color: rgb(255, 255, 255);
     
   }
   table,
@@ -86,7 +88,7 @@ body {
     border: none;
     outline: none;
     height: 40px;
-    background: #ff9900;
+    background: #8fcc00;
     color: #fff;
     font-size: 18px;
     border-radius: 20px;
@@ -113,3 +115,8 @@ body {
 {
   color: #ffc107;
 }
+body {
+  background-image: url("Stockphoto/background.jpg");
+  background-color: #cccccc;
+  background-size: 100%;
+ }
