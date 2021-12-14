@@ -4,21 +4,25 @@ let taskManager = require('./../database/taskManager');
 
 
 /**
- * Returning all entries in the task manager database. If there is no entry it returns an empty JSON object.
+ * Returning all entries in the task manager database. The actual data will be stored in the data variable. The response also have an message
+ * with short information and a length attribute containing the length of the data array (the number of entries). If there is no entry it will
+ * return an empry array. Also hold an ok field with a boolean, wether the request was successfull or not. If the request was successfull the
+ * response status will be 200 if not it will be 500. If there was an error on the serverside, the reponse will contain an error field.  
  */
 router.get('/', async function (req, res, next) {
-    let tasks = await taskManager.getAllTask();
-    res.json(tasks);
-    res.send()
+    let response = await taskManager.getAllTask();
+    response.ok ? res.status(200) : res.status(500);
+    res.json(response);
+    res.send();
 });
 
 /**
  * Returning the entry in the task database with the given id. If there is no entry with these id, the response will return an error message.
  */
 router.get('/:id', async function (req, res, next) {
-    let id = req.params.id;
-    let task = await taskManager.getOneTask(id);
-    res.json(task);
+    let response = await taskManager.getOneTask(req.params.id);
+    response.ok ? res.status(200) : res.status(500);
+    res.json(ressponse);
     res.send();
 })
 /**
@@ -32,52 +36,27 @@ router.get('/:id', async function (req, res, next) {
  * }} 
  */
 router.post('/create', async (req, res, next) => {
-    let taskName = req.body.taskName;
-    let userID = req.body.userID;
-    let details = req.body.details;
-    let until = req.body.until;
-    let response;
-    try {
-        response = await taskManager.createTask({
-            taskName: taskName,
-            userID: userID,
-            details: details,
-            until: until
-        });
-    } catch (e) {
-        response = e;
-    }
+    let response = await taskManager.createTask(req.body);
+    response.ok ? res.status(200) : res.status(500);
     res.json(response);
     res.send();
-
 })
 
 router.get('/delete/:id', async (req, res, next) => {
-    let id = req.params.id;
-    let response = await taskManager.deleteOneTask(id);
+    let response = await taskManager.deleteOneTask(req.params.id);
+    response.ok? res.status(200):res.status(500);
     res.json(response);
     res.send();
 });
+
 /**
- * Modify a  entry in the task manager database
- * Requirements for an successfull request:
- * {@code {
- *    "taskName":String,
- *    "creator":UserID,
- *    "details":String,
- *    "until":DateObject,
- *    "modifier":UserID
- * }} 
+ * Modify the task with the given id. The task object must contain the id of the task.
+ * All data from the task object needs to be send with the request.
  */
-router.post('/modify', (req, res, next) => {
-    res.status(200);
-    res.json({
-        status: "ok",
-        body: req.body
-    })
-
-    res.send()
-
-})
-
+router.post('/modify', async (req, res, next) => {
+    let response = await taskManager.modifyTask(req.body);
+    response.ok? res.status(200):res.status(500);
+    res.json(response);
+    res.send();
+});
 module.exports = router;

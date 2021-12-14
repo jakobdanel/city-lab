@@ -1,35 +1,46 @@
-const {userSchema,userModel} = require('./schema/userSchema.js');
-const Task = require('./schema/taskSchema.js');
-
-const {
-    mongooseInteraction
-} = require('./mongooseConnection');
-
-// const jakob = new User({
-//     username: 'jdanel',
-//     firstName: 'Jakob',
-//     lastName: 'Danel',
-//     password: '1234',
-//     email: 'jakob@test.de'
-// })
-
 /**
- * An dummy Task Object as testing dummy.
+ * The User Model from `./schema/userSchema.js` 
  */
-const waterPlant = new Task({
-    taskName: "Water Flowers",
-    details: "Watering all plants, that need water at the moment",
-    until: "Tomorrow",
-});
+const User = require('./schema/userSchema').userModel;
 
 /**
- * Getting all entries inside  the database which are in the collection Tasks. If there is no entry it returns null. 
- * @returns An array containing all entries in the Task database.
+ * The User Schema from `./schema/userSchema.js` 
+ */
+const UserSchema = require('./schema/userSchema').userSchema;
+
+/**
+ * The Task Model from `./schema/taskSchema.js`
+ */
+const Task = require('./schema/taskSchema.js').taskModel;
+
+/**
+ * The mongoose package from npm.
+ */
+const mongoose = require('mongoose');
+
+
+
+/**
+ * Getting all entries inside  the database which are in the collection Tasks. If there is no entry it returns an empty array. Also return
+ * some metadata 
+ * @returns An object with metadata and the actual data stored in the data field.
  */
 async function getAllTask() {
-    return await mongooseInteraction(async (args) => {
-        return await Task.find();
-    }, {});
+    try {
+        let result = await Task.find();
+        return {
+            ok: true,
+            message: "Successfull loaded",
+            data: result,
+            dataLength: result.length
+        }
+    } catch (error) {
+        return {
+            ok: false,
+            message: "Error occured",
+            error
+        }
+    }
 }
 
 /**
@@ -39,9 +50,21 @@ async function getAllTask() {
  * @returns The Task object with the given id, if exists.
  */
 async function getOneTask(id) {
-    return await mongooseInteraction(async (id) => {
-        return await Task.findById(id);
-    }, id);
+    try {
+        let result = await Task.findById(id);
+        return {
+            ok: true,
+            data: result,
+            message: "Successfull loaded"
+        }
+    } catch (error) {
+        return {
+            ok: false,
+            data: null,
+            message: "An error occured",
+            error,
+        }
+    }
 }
 
 /**
@@ -56,57 +79,70 @@ async function getOneTask(id) {
  * @param {{taskName:String,user: ObjectID,details:String,until:String,modifier:ObjectID}} taskData The data which be wanted to store in the DB.
  */
 async function createTask(taskData) {
-    mongooseInteraction(async (args) => {
-        //Check if User exists
-        let users = await userModel.find();
-        let userExist = {
-            user: false,
-            modifier: false
-        }
-        for (let i = 0; i < users.length; i++) {
-            const element = users[i];
-            if (element._id == taskData.user) {
-                userExist.user = true;
-            }
-            if (element._id == taskData.modifier) {
-                userExist.modifier = true;
-            }
-        }
-        if (!userExist.user) {
-            throw new Error("User does not exist");
-        }
-        if (!userExist.modifier) {
-            throw new Error("Modifier does not exist");
-        }
-        if (userExist.user && userExist.modifier) {
-            if (taskData.taskName == "") {
-                throw new Error("taskName cannot be zero");
-            }
-            if (taskData.details == undefined) {
-                throw new Error("details must exist");
-            }
-            if (taskData.until == '') {
-                throw new Error('until cannot be zero')
-            } else {
-                await Task.create({
-                    taskName: taskData.taskName,
-                    user: taskData.user,
-                    details: taskData.details,
-                    until: taskData.until,
-                    modifier: taskData.modifier
-                });
-            }
 
+    let task = {
+        taskName: taskData.taskName,
+        taskType: taskData.taskType,
+        creator: taskData.creator,
+        details: taskData.details,
+        until: taskData.until,
+        modifier: taskData.modifier,
+        assignedTo: taskData.assignedTo
+    }
+    let taskType = task.taskType;
+    if (taskType == "Plant") {
+        task.plant = taskData.plant;
+    }
+    if (taskType == "Object") {
+        task.object = taskData.object;
+    }
+    if (taskType == "Plant") {
+        task.plant = taskData.plant;
+    }
+    try {
+        await Task.create(task);
+    } catch (error) {
+        return {
+            ok: false,
+            data: null,
+            messsage: "Validation error occured",
+            error
         }
-    }, taskData);
+    }
+
+    return {
+        ok: true,
+        data: task,
+        message: "Successfull added"
+    }
 }
 
+
+
+/**
+ * This function delete the task with the given id. If the task is not found the function will return null.
+ * @param {mongoose.SchemaType.ObjectID} id The id of the task which should be deleted. 
+ * @returns An object with the status of the delete operation, in the ok field as boolean and a message in the message field. If the request
+ * was successful the data field will hold the return value from mongoose. Else the data field will be null and the error field will hold the error
+ * object.
+ */
 async function deleteOneTask(id) {
-    return await mongooseInteraction(async (id) => {
-        return await Task.remove({
+    try {
+        let result = await Task.remove({
             _id: id
         });
-    }, id)
+        return {
+            ok:true,
+            message: "Successfully removed Task",
+            data: result
+        } 
+    } catch (error) {
+        return {
+            ok:false,
+            message: "An error occured",
+            error
+        } 
+    }
 }
 /**
  * Extending the task object with the objects from the User with the Id given in the parameter. Both user and modifier will be extended. 
@@ -114,17 +150,15 @@ async function deleteOneTask(id) {
  * @returns The extended object with the user information.
  */
 async function getUserToTask(task) {
-    return await mongooseInteraction(async (task) => {
-        let user = await User.findById(task.user);
-        let modifier = await User.findById(task.modifier);
-        return {
-            _id: task._id,
-            user: user,
-            details: task.details,
-            until: task.until,
-            modifier: modifier
-        };
-    }, task)
+    let user = await User.findById(task.user);
+    let modifier = await User.findById(task.modifier);
+    return {
+        _id: task._id,
+        user: user,
+        details: task.details,
+        until: task.until,
+        modifier: modifier
+    }
 }
 
 /**
@@ -141,11 +175,61 @@ async function getUserToTasks(tasks) {
     }
     return extendedTasks;
 }
+
+/**
+ * This function takes in the modified task object and updates the task with the given id. The task object must contain the id of the task.
+ * All data from the task object needs to be send with the request. The function will check if the task exists. If the task exists the function
+ * will update the task with the given id. If the task does not exist the function will return null. Also the function return an status as boolean
+ * and a message in the message field. If an error occured the data field will be null and the error field will hold the error object.
+ * @param {any} taskData The data from req.body which should be updated. Need to contain the id of the task. Also must contain taskName,
+ * creator, details, until,assignedTo and modifier. Must contain one of Plant, Object or Process as in taskType specified. 
+ * @returns The updated task object in the result field. If the task does not exist the result field will be null. If an error occured the 
+ * result field will be null and the error field will hold the error object. Also containing a status field as boolean and a message field.
+ */
+async function modifyTask(taskData) {
+    let task = {
+        taskName: taskData.taskName,
+        taskType: taskData.taskType,
+        creator: taskData.creator,
+        details: taskData.details,
+        until: taskData.until,
+        modifier: taskData.modifier,
+        assignedTo: taskData.assignedTo
+    }
+    let taskType = task.taskType;
+    if (taskType == "Plant") {
+        task.plant = taskData.plant;
+    }
+    if (taskType == "Object") {
+        task.object = taskData.object;
+    }
+    if (taskType == "Plant") {
+        task.plant = taskData.plant;
+    }
+    try {
+        let result = await Task.findByIdAndUpdate(taskData._id, task);
+        return {
+            ok: true,
+            data: result,
+            message: "Successfull updated" 
+        }
+    } catch (error) {
+        return {
+            ok: false,
+            data: null,
+            message: "Validation error occured",
+            error
+        }
+    }
+} 
+
+
 module.exports = {
     getAllTask,
     getOneTask,
     createTask,
     deleteOneTask,
     getUserToTask,
-    getUserToTasks
+    getUserToTasks,
+    modifyTask
 };
