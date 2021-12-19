@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<!--Bootstrap-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+    
+
+    </head>
+<body>
+ <!-- Navbar Bootstrap -->
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="garden_overview">Start</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="Taskscheduler">Taskscheduler</a></li>
+        <li><a href="plantcare">Plants and Tools</a></li>
+        <li><a href="signin">Sign out</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+<!-- Navbar Bootstrap end -->
+
+
+  
+  <h1>Task Scheduler</h1>
+    <form>
+      <div class="input-row">
+        <label for="task">Task</label>
+        <input type="text" name="task" id="task" required/>
+      </div>
+      <div class="input-row">
+        <label for="assignee">Assignee</label>
+        <input type="text" name="assignee" id="assignee" required />
+      </div>
+      <div class="input-row">
+        <label for="until">Until</label>
+        <input type="date" name="until" id="until" />
+      </div>
+      <button>Submit</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Assignee</th>
+          <th>Until</th>
+
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+
+    
+    <!-- local script Ressources-->
+    <script src="js/taskscheduler_table.js"></script>
+    <link rel="stylesheet" href="stylesheets/style.css" />
+</body>
+</html>
