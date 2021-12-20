@@ -6,7 +6,13 @@ let {
     getUserToTasks,
     deleteOneTask
 } = require('./taskManager.js');
-
+let {
+    getAllUsers,
+    getOneUser,
+    createUser,
+    deleteOneUser,
+    modifyUser
+} = require('./userManage.js');
 // createTask({
 //     taskName: 'Clean up',
 //     user: '619d0b26f68313e3408c1e95',

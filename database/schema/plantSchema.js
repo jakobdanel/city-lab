@@ -1,7 +1,25 @@
 const mongoose = require('mongoose');
 
 let plantSchema = new mongoose.Schema({
-    name:String
+    plantName:{
+        type:String,
+        required:true
+    },
+    plantSpecies:{
+        type:String,
+        required:true
+    },
+    details:{
+        type: [String],
+        minLength: 1,
+        required: true
+    },
+    imgUrl:{
+        type:String
+    },
+    dataUrl:{
+        type:String
+    }
 })
 
 let plantModel = mongoose.model("Plant",plantSchema);
