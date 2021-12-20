@@ -6,17 +6,20 @@ var logger = require('morgan');
 var bodyParser = require('body-parser')
 const MongoClient = require('mongodb').MongoClient
 const assert = require('assert')
-const app= express() //create express app
 const port = 3000;
 
 const url = 'mongodb://localhost:27017'
 const client = new MongoClient(url)
 const dbName = 'easyGardenDB'
 const usercollectionName = 'users'
+let mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var taskManagerRouter = require('./routes/taskManager');
+
+var app = express();
+mongoose.connect('mongodb://localhost:27017/easyGardenDB');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
