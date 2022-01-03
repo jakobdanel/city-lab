@@ -7,7 +7,7 @@ let userManager = require('./../database/userManage');
 /**
  * Returning all users listed in the database. If there is no entry, it returns an empty JSON object.
  */
-router.get('/', function (req, res, next) {
+router.get('/', async function (req, res, next) {
   let response = await userManager.getAllUsers();
     response.ok ? res.status(200) : res.status(500);
     res.json(response);

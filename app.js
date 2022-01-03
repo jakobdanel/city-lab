@@ -19,12 +19,49 @@ var usersRouter = require('./routes/users');
 var taskManagerRouter = require('./routes/taskManager');
 
 var app = express();
+
 mongoose.connect('mongodb://localhost:27017/easyGardenDB');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+//view with ejs by jan
 
+//EJS is a simple templating language that lets you generate HTML markup with plain JavaScript.
+//No religiousness about how to organize things. 
+//No reinvention of iteration and control-flow. It's just plain JavaScript.
+app.set('views', './views')
+app.set('view engine', 'ejs')
+
+//Taskscheduler
+app.get('/Taskscheduler',(req,res)=>{
+    res.render('Taskscheduler')
+})
+//plantcare
+app.get('/plantcare',(req,res)=>{
+  res.render('plantcare')
+})
+//gardenoverview
+app.get('/garden_overview',(req,res)=>{
+  res.render('garden_overview')
+})
+//gardenoverview
+app.get('/tools',(req,res)=>{
+  res.render('tools')
+})
+//signin
+app.get('/signin',(req,res)=>{
+  res.render('signin')
+})
+//email_popup
+app.get('/email_popup',(req,res)=>{
+  res.render('email_popup')
+})
+//Impressum
+app.get('/Impressum',(req,res)=>{
+  res.render('Impressum')
+})
+//end jan
 app.use(logger('dev'));
 app.use(express.json({
   limit: '100mb'
