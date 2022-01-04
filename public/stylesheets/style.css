@@ -13,6 +13,7 @@ body {
 #contentFrame{
   position: relative;
   top: 5rem;
+  color:rgb(255, 255, 255)
 }
 #spacer{
   height: 6.5rem;
@@ -64,7 +65,7 @@ body {
 .loginbox{
     width: 320px;
     height: 420px;
-    background: rgb(0, 0, 0);
+    background: #004241 !important;
     color: #fff;
     top:50%;
     left:30%;
