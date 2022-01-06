@@ -56,20 +56,24 @@
     <h1>Plants</h1>
     <form>
       <div class="input-row">
-        <label for="plantname">Plant/Tool Name</label>
-        <input type="text" name="plantname" id="plantname" required/>
+        <label for="plantName">Plant</label>
+        <input type="text" name="plantName" id="plantName" required/>
       </div>
       <div class="input-row">
-        <label for="assigneewatering">Assignee</label>
-        <input type="text" name="Assigneept" id="assigneept" required/>
+        <label for="plantSpecies">Species</label>
+        <input type="text" name="plantSpecies" id="plantSpecies" required/>
       </div>
       <div class="input-row">
-        <label for="howtocare">How to Care</label>
-        <input type="text" name="howtocare" id="howtocare" />
+        <label for="details">Details</label>
+        <input type="description" name="details" id="details" required/>
       </div>
       <div class="input-row">
-        <label for="description">Description</label>
-        <input type="description" name="description" id="description" />
+        <label for="imgUrl">Image Url</label>
+        <input type="Text" name="imgUrl" id="imgUrl" />
+      </div>
+      <div class="input-row">
+        <label for="dataUrl">Data Url</label>
+        <input type="Text" name="dataUrl" id="dataUrl" />
       </div>
      
       <input type="submit" value="Submit">
@@ -77,11 +81,11 @@
     <table>
       <thead>
         <tr>
-          <th>Plant/Tool Name</th>
-          <th>Assignee</th>
-          <th>How to Care</th>
-          <th>Description</th>
-          <th>Modify</th>
+          <th>Plant</th>
+          <th>Species</th>
+          <th>Details</th>
+          <th>Image Url</th>
+          <th>Image Data</th>
         </tr>
       </thead>
       <tbody></tbody>

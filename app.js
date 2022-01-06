@@ -14,14 +14,22 @@ const dbName = 'easyGardenDB'
 const usercollectionName = 'users'
 let mongoose = require('mongoose');
 
+
+//bodyparser by jan
+//app.use(bodyParser.json())
+//initialize Routen
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var taskManagerRouter = require('./routes/taskManager');
+//added Jan
+var plantManagerRouter = require('./routes/plantManager');
+
 
 var app = express();
-
+//connect to mongodb
 mongoose.connect('mongodb://localhost:27017/easyGardenDB');
-
+//Jan added
+mongoose.Promise=global.Promise;
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -74,10 +82,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-//add Routes
+//add Routes from line 18-20...
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/taskManager', taskManagerRouter);
+app.use('/taskManager', taskManagerRouter); //route?
+//added jan
+app.use('/plantmanager',plantManagerRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

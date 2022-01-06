@@ -22,7 +22,7 @@ let plantSchema = new mongoose.Schema({
     }
 })
 
-let plantModel = mongoose.model("Plant",plantSchema);
+let plantModel = mongoose.model("plant",plantSchema);
 
 module.exports = {
     plantSchema,
