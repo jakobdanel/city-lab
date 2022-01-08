@@ -8,6 +8,7 @@ let idValidator = require('mongoose-id-validator');
 
 const taskSchema = new mongoose.Schema({
     taskName: {
+        
         type: String,
         required: true
     },

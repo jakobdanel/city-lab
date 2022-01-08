@@ -57,24 +57,42 @@
     <form action="/taskManager/create" method="post" role="form">
       <div class="input-row">
         <label for="taskName">Task</label>
-        <input type="text" name="taskname" id="task" required/>
+        <input type="text" name="taskname" id="taskname" required/>
       </div>
       <div class="input-row">
-        <label for="assignedTo">Assignee</label>
-        <input type="text" name="assignedTo" id="assignee" required />
+        <label for="taskType">TaskType</label>
+        <input type="text" name="taskType" id="taskType" />
+      </div>
+      <div class="input-row">
+        <label for="creator">creator</label>
+        <input type="text" name="creator" id="creator" />
+      </div>
+      <div class="input-row">
+        <label for="details">Details</label>
+        <input type="text" name="details" id="details" />
       </div>
       <div class="input-row">
         <label for="until">Until</label>
         <input type="date" name="until" id="until" />
       </div>
+      <div class="input-row">
+        <label for="assignedTo">Assignee</label>
+        <input type="text" name="assignedTo" id="assignee" required />
+      </div>
+     
       <button type="submit" name="action">Submit</button>
     </form>
     <table>
       <thead>
         <tr>
           <th>Task</th>
-          <th>Assignee</th>
+          <th>Tasktype</th>
+          <th>Creator</th>
+          <th>Details</th>
           <th>Until</th>
+          <th>Assignee</th>
+          
+          
 
           <th></th>
         </tr>
