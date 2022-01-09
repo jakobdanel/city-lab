@@ -21,6 +21,7 @@ let mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var taskManagerRouter = require('./routes/taskManager');
+let processManagerRouter = require('./routes/processManager');
 //added Jan
 var plantManagerRouter = require('./routes/plantManager');
 
@@ -88,6 +89,7 @@ app.use('/users', usersRouter);
 app.use('/taskManager', taskManagerRouter); //route?
 //added jan
 app.use('/plantmanager',plantManagerRouter);
+app.use('/processmanager',processManagerRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
