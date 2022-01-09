@@ -39,8 +39,9 @@ router.post('/create', async (req, res, next) => {
     console.log("creation incoming")
     let response = await taskManager.createTask(req.body);
     response.ok ? res.status(200) : res.status(500);
+    res.redirect('/Taskscheduler');
     res.json(response);
-    res.send();
+
 })
 
 router.get('/delete/:id', async (req, res, next) => {
