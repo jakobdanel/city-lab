@@ -24,6 +24,7 @@ var taskManagerRouter = require('./routes/taskManager');
 var processManagerRouter = require('./routes/processManager');
 var plantManagerRouter = require('./routes/plantManager');
 var objectManagerRouter = require('./routes/objectManager');
+var apiRouter = require('./routes/api');
 
 
 var app = express();
@@ -86,6 +87,7 @@ app.use('/taskManager', taskManagerRouter);
 app.use('/plantManager',plantManagerRouter);
 app.use('/processManager',processManagerRouter);
 app.use('/objectManager',objectManagerRouter);
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

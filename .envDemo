@@ -1,0 +1,3 @@
+# All Tokens your need to setup in your own .env file
+
+JWT_SECRET_TOKEN = "your secret token"
