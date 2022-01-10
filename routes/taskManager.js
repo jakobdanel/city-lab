@@ -36,12 +36,10 @@ router.get('/:id', async function (req, res, next) {
  * }} 
  */
 router.post('/create', async (req, res, next) => {
-    console.log("creation incoming")
     let response = await taskManager.createTask(req.body);
     response.ok ? res.status(200) : res.status(500);
     res.redirect('/Taskscheduler');
     res.json(response);
-
 })
 
 router.get('/delete/:id', async (req, res, next) => {

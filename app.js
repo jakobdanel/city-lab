@@ -17,13 +17,13 @@ let mongoose = require('mongoose');
 
 //bodyparser by jan
 //app.use(bodyParser.json())
-//initialize Routen
+//initialize Routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var taskManagerRouter = require('./routes/taskManager');
-let processManagerRouter = require('./routes/processManager');
-//added Jan
+var processManagerRouter = require('./routes/processManager');
 var plantManagerRouter = require('./routes/plantManager');
+var objectManagerRouter = require('./routes/objectManager');
 
 
 var app = express();
@@ -45,10 +45,6 @@ app.set('view engine', 'ejs')
 //Taskscheduler
 app.get('/Taskscheduler',(req,res)=>{
     res.render('Taskscheduler')
-})
-//plantcare
-app.get('/plantcare',(req,res)=>{
-  res.render('plantcare')
 })
 //gardenoverview
 app.get('/garden_overview',(req,res)=>{
@@ -86,10 +82,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 //add Routes from line 18-20...
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/taskManager', taskManagerRouter); //route?
-//added jan
-app.use('/plantmanager',plantManagerRouter);
-app.use('/processmanager',processManagerRouter);
+app.use('/taskManager', taskManagerRouter);
+app.use('/plantManager',plantManagerRouter);
+app.use('/processManager',processManagerRouter);
+app.use('/objectManager',objectManagerRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -104,7 +100,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('notFoundError');
 });
 
 module.exports = app;
