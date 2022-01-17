@@ -34,7 +34,17 @@
                 <li class="nav-item">
                     <a class="nav-link rounded" href="garden_overview">Start</a>
                 </li>
-                <li class="nav-item">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="Taskscheduler"> Add+
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Task</a></li>
+                      <li><a href="plantcare">Plant</a></li>
+                      <li><a href="tools">Tool</a></li>
+                      <li><a href="process">Process</a></li>
+                    </ul>
+                  </li>
+                <!--<li class="nav-item">
                     <a class="nav-link rounded" href="Taskscheduler">Taskscheduler</a>
                 </li>
                 <li class="nav-item">
@@ -42,7 +52,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active rounded" href="tools">Tools</a>
-                </li>
+                </li>-->
                 <li class="nav-item">
                     <a class="nav-link active rounded" href="signin">Sign out</a>
                 </li>
@@ -59,28 +69,33 @@
             <label for="toolname">Tool Name</label>
             <input type="text" name="toolname" id="toolname" required/>
           </div>
-          <div class="input-row">
+          <!--<div class="input-row">
             <label for="borrower">Borrower</label>
             <input type="text" name="borrower" id="borrower" required/>
-          </div>
+          </div>-->
           <div class="input-row">
             <label for="description">Description</label>
             <input type="description" name="description" id="description" />
           </div>
+          <div class="input-row">
+            <label for="imgUrl">Image Url</label>
+            <input type="Text" name="imgUrl" id="imgUrl" />
+          </div>
           <button type="submit" name="action">Submit</button>
         </form>
-        <table>
+        <!--<table>
           <thead>
             <tr>
               <th>Toolname</th>
               <th>Borrower</th>
               <th>Description</th>
+              <th>Image</th>
     
               <th></th>
             </tr>
           </thead>
           <tbody></tbody>
-        </table>
+        </table> -->
     </div>
     
 </div>
@@ -90,7 +105,7 @@
     <div class="row col col-12 d-flex flex-column ">
         <p><b>Links</b><br>
             <a href="https://www.uni-muenster.de/de/">University</a><br>
-            <a href="https://github.com/jakobdanel/city-lab">GitHub Repository</a>
+            <a href="https://github.com/jakobdanel/city-lab">GitHub Repository</a><br>
             <a href="impressum">Contact</a>
         </p>
     </div>

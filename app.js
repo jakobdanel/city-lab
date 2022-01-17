@@ -50,9 +50,21 @@ app.get('/Taskscheduler',(req,res)=>{
 app.get('/garden_overview',(req,res)=>{
   res.render('garden_overview')
 })
-//gardenoverview
+//task
+app.get('/task',(req,res)=>{
+  res.render('task')
+})
+//tools
 app.get('/tools',(req,res)=>{
   res.render('tools')
+})
+//process
+app.get('/process',(req,res)=>{
+  res.render('process')
+})
+//plantcare
+app.get('/plantcare',(req,res)=>{
+  res.render('plantcare')
 })
 //signin
 app.get('/signin',(req,res)=>{
