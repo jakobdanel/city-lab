@@ -14,14 +14,24 @@ const dbName = 'easyGardenDB'
 const usercollectionName = 'users'
 let mongoose = require('mongoose');
 
+
+//bodyparser by jan
+//app.use(bodyParser.json())
+//initialize Routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var taskManagerRouter = require('./routes/taskManager');
+var processManagerRouter = require('./routes/processManager');
+var plantManagerRouter = require('./routes/plantManager');
+var objectManagerRouter = require('./routes/objectManager');
+var apiRouter = require('./routes/api');
+
 
 var app = express();
-
+//connect to mongodb
 mongoose.connect('mongodb://localhost:27017/easyGardenDB');
-
+//Jan added
+mongoose.Promise=global.Promise;
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -36,10 +46,6 @@ app.set('view engine', 'ejs')
 //Taskscheduler
 app.get('/Taskscheduler',(req,res)=>{
     res.render('Taskscheduler')
-})
-//plantcare
-app.get('/plantcare',(req,res)=>{
-  res.render('plantcare')
 })
 //gardenoverview
 app.get('/garden_overview',(req,res)=>{
@@ -74,10 +80,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-//add Routes
+//add Routes from line 18-20...
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/taskManager', taskManagerRouter);
+app.use('/plantManager',plantManagerRouter);
+app.use('/processManager',processManagerRouter);
+app.use('/objectManager',objectManagerRouter);
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -92,7 +102,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('notFoundError');
 });
 
 module.exports = app;

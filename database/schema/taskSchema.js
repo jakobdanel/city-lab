@@ -8,6 +8,7 @@ let idValidator = require('mongoose-id-validator');
 
 const taskSchema = new mongoose.Schema({
     taskName: {
+        
         type: String,
         required: true
     },
@@ -17,21 +18,25 @@ const taskSchema = new mongoose.Schema({
         required: true
     },
     plant: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: "Plant"
+        // type: mongoose.SchemaTypes.ObjectId,
+        // ref: "Plant"
+        type: String
     },
     object: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: "Object"
+        // type: mongoose.SchemaTypes.ObjectId,
+        // ref: "Object"
+        type: String
     },
     process: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: "Process"
+        // type: mongoose.SchemaTypes.ObjectId,
+        // ref: "Process"
+        type: String
     },
     creator: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'User',
+        // type: mongoose.SchemaTypes.ObjectId,
+        // ref: 'User',
         required: true,
+        type: String
     },
     details: {
         type: [String],
@@ -44,14 +49,15 @@ const taskSchema = new mongoose.Schema({
         default: () => Date.now(),
         validator: (date) => Date.now() <= date
     },
-    modifier: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    },
+    //modifier: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'User'
+    // },
     assignedTo: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'User',
-        required: true
+        // type: mongoose.SchemaTypes.ObjectId,
+        // ref: 'User',
+        required: true,
+        type: String
     }
 })
 taskSchema.plugin(idValidator);
