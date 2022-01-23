@@ -63,26 +63,35 @@
     <!--Main Content-->
 <div id="contentFrame" class="d-flex justify-content-center flex-wrap align-items-center p-5">
     <div id="textContent" class=" col col-lg-4 col-12 rounded text-center">
-        <h1>Tools</h1>
-        <form>
-          <div class="input-row">
-            <label for="toolname">Tool Name</label>
-            <input type="text" name="toolname" id="toolname" required/>
-          </div>
-          <!--<div class="input-row">
-            <label for="borrower">Borrower</label>
-            <input type="text" name="borrower" id="borrower" required/>
-          </div>-->
-          <div class="input-row">
-            <label for="description">Description</label>
-            <input type="description" name="description" id="description" />
-          </div>
-          <div class="input-row">
-            <label for="imgUrl">Image Url</label>
-            <input type="Text" name="imgUrl" id="imgUrl" />
-          </div>
-          <button type="submit" name="action">Submit</button>
-        </form>
+        <h1>Task</h1>
+        <form action="/taskManager/create" method="post" role="form">
+      <div class="input-row">
+        <label for="taskName">Task</label>
+        <input type="text" name="taskName" id="taskName" required/>
+      </div>
+      <div class="input-row">
+        <label for="taskType">TaskType</label>
+        <input type="text" name="taskType" id="taskType" />
+      </div>
+      <div class="input-row">
+        <label for="creator">creator</label>
+        <input type="text" name="creator" id="creator" />
+      </div>
+      <div class="input-row">
+        <label for="details">Details</label>
+        <input type="text" name="details" id="details" />
+      </div>
+      <div class="input-row">
+        <label for="until">Until</label>
+        <input type="date" name="until" id="until" />
+      </div>
+      <div class="input-row">
+        <label for="assignedTo">Assignee</label>
+        <input type="text" name="assignedTo" id="assignee" required />
+      </div>
+     
+      <button type="submit" name="action">Submit</button>
+    </form>
         <!--<table>
           <thead>
             <tr>
