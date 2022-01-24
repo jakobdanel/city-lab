@@ -1,6 +1,5 @@
   .navbar {
     background-color: #004241;
-    overflow: hidden;
     position: fixed;
     top: 0;
     width: 100%;
@@ -18,7 +17,12 @@
     background-color: #90c7b2 !important;
     color: #004241 !important;
   }
-  
+  .navbar a.active{
+  background-color: #006664;
+  }
+  .dropdown-a{
+    background-color: #006664 !important;
+  }
 
 
   #myFooter {

@@ -4,12 +4,16 @@ body {
   font-size: 28px;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #90c7b2 !important;
-  height: 100vh;
   min-height: 100vh;
-  background-image: url("background.jpg");
-  background-size: 100%;
+  background-image: url("../src/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display:flex;
+  flex-direction: column;
 }
-#main{ height: 140vh;}
+#main{ height: 100vh;
+  width: 100%;
+  flex: 1;}
 #contentFrame{
   position: relative;
   top: 5rem;
@@ -140,4 +144,10 @@ body {
 .loginbox a:hover
 {
   color: #ffc107;
+}
+.deleteImage:hover{
+  cursor: pointer;
+  border-width: 2px;
+  border-color: rgba(163, 4, 4, 0.904);
+  border-style: dashed;
 }

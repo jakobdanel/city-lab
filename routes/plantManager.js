@@ -26,10 +26,11 @@ router.get('/:id',async function(req,res, next){
  * Create a new entry in the plants collection
  */
 router.post('/create',async function(req,res, next){
+  console.log(req.body)
   let response = await plantManager.createPlant(req.body);
   response.ok ? res.status(200) : res.status(500);
   res.redirect('/Taskscheduler');
-  res.json(response);
+  res.send(response);
 })
 
 /**

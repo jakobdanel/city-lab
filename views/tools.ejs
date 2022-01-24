@@ -64,10 +64,10 @@
 <div id="contentFrame" class="d-flex justify-content-center flex-wrap align-items-center p-5">
     <div id="textContent" class=" col col-lg-4 col-12 rounded text-center">
         <h1>Tools</h1>
-        <form>
+        <form action="/objectManager/create" method="post" role="form">
           <div class="input-row">
-            <label for="toolname">Tool Name</label>
-            <input type="text" name="toolname" id="toolname" required/>
+            <label for="objectName">Tool Name</label>
+            <input type="text" name="objectName" id="objectName" required/>
           </div>
           <!--<div class="input-row">
             <label for="borrower">Borrower</label>
@@ -78,8 +78,8 @@
             <input type="description" name="description" id="description" />
           </div>
           <div class="input-row">
-            <label for="imgUrl">Image Url</label>
-            <input type="Text" name="imgUrl" id="imgUrl" />
+            <label for="imageUrl">Image Url</label>
+            <input type="Text" name="imageUrl" id="imageUrl" />
           </div>
           <button type="submit" name="action">Submit</button>
         </form>

@@ -12,8 +12,7 @@ let taskManager = require('./../database/taskManager');
 router.get('/', async function (req, res, next) {
     let response = await taskManager.getAllTask();
     response.ok ? res.status(200) : res.status(500);
-    res.json(response);
-    res.send();
+    res.send(response);
 });
 
 /**
@@ -39,14 +38,12 @@ router.post('/create', async (req, res, next) => {
     let response = await taskManager.createTask(req.body);
     response.ok ? res.status(200) : res.status(500);
     res.redirect('/Taskscheduler');
-    res.json(response);
 })
 
 router.get('/delete/:id', async (req, res, next) => {
     let response = await taskManager.deleteOneTask(req.params.id);
     response.ok? res.status(200):res.status(500);
-    res.json(response);
-    res.send();
+    res.send(response);
 });
 
 /**

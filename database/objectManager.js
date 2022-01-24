@@ -86,7 +86,7 @@
  
      return {
          ok: true,
-         data: plant,
+         data: object,
          message: "Successfull added"
      }
  }

@@ -43,6 +43,13 @@ app.set('view engine', 'pug');
 app.set('views', './views')
 app.set('view engine', 'ejs')
 
+app.get('/index',(req,res)=>{
+  res.render('garden_overview')
+})
+app.get('/',(req,res)=>{
+  res.render('garden_overview')
+})
+
 //Taskscheduler
 app.get('/Taskscheduler',(req,res)=>{
     res.render('Taskscheduler')

@@ -1,40 +1,57 @@
-const formEl = document.querySelector("form");
-      const tbodyEl = document.querySelector("tbody");
-      const tableEl = document.querySelector("table");
+function fillTaskTable(){
+  $.ajax({
+    url:"/taskManager",
+    method: "GET",
+  }).done(function(res){
+    let tasks=res.data;
+    let table=document.getElementById("taskTable")
+    for(i=0; i<tasks.length;i++){
+      let row = table.insertRow();
+        row.id = "row";
+      let name = row.insertCell();
+        name.textContent = tasks[i].taskName;
+      let type = row.insertCell();
+        type.textContent = tasks[i].taskType;
+      let creator = row.insertCell();
+        creator.textContent = tasks[i].creator;
+      let details = row.insertCell();
+        details.textContent = tasks[i].details;
+      let until = row.insertCell();
+        until.textContent = tasks[i].until;
+      let assignedTo = row.insertCell();
+        assignedTo.textContent = tasks[i].assignedTo;
+
+      let deleteTr = row.insertCell();
+
+      let deleteDiv= document.createElement("div");
+      deleteDiv.setAttribute("class","deleteImage")
       
-      function onAddtask(e) {
-        e.preventDefault();
-        const taskName = document.getElementById("taskName").value;
-        const taskType = document.getElementById("taskType").value;
-        const creator = document.getElementById("creator").value;
-        const details = document.getElementById("details").value;
-        const until = document.getElementById("until").value;
-        const assignee = document.getElementById("assignee").value;
+      let binImg = document.createElement("img");
+      binImg.src="src/delete_hover.png";
+      binImg.id=i;
+      binImg.setAttribute("onClick","deleteTaskFromTable(this.id)");
+      binImg.setAttribute("class","deleteImage");
+      deleteTr.appendChild(binImg);
 
-        tbodyEl.innerHTML += `
-            <tr>
-                <td>${taskName}</td>
-                <td>${taskType}</td>
-                <td>${creator}</td>
-                <td>${details}</td>
-                <td>${until}</td>
-                <td>${assignee}</td>
-                
-                
-                
-                <td><button class="deleteBtn">Delete</button></td>
-            </tr>
-        `;
-      }
+      let idSaver=row.insertCell();
+      idSaver.textContent=tasks[i]._id;
+      idSaver.id="taskId"+i
+      document.getElementById("taskId"+i).style.display="none"
+    } 
+  })
+}
+fillTaskTable();
 
-      function onDeleteRow(e) {
-        if (!e.target.classList.contains("deleteBtn")) {
-          return;
-        }
-
-        const btn = e.target;
-        btn.closest("tr").remove();
-      }
-
-      formEl.addEventListener("submit", onAddtask);
-      tableEl.addEventListener("click", onDeleteRow);
+function deleteTaskFromTable(id){
+  let taskId=document.getElementById("taskId"+id);
+  let table=document.getElementById("taskTable");
+  $.ajax({
+    url:"/taskManager/delete/"+taskId.textContent,
+    method: "GET",
+  }).done(function(res){
+    if(res.ok){
+      table.deleteRow(parseInt(id)+1)
+    }else{
+    }
+  })
+}

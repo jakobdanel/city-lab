@@ -64,37 +64,25 @@
 <div id="contentFrame" class="d-flex justify-content-center flex-wrap align-items-center p-5">
     <div id="textContent" class=" col col-lg-4 col-12 rounded text-center">
         <h1>Process</h1>
-        <form>
+        <form action="/processManager/create" method="post" role="form">
           <div class="input-row">
-            <label for="toolname">Process Name</label>
-            <input type="text" name="processname" id="processname" required/>
+            <label for="name">Process Name</label>
+            <input type="text" name="name" id="name" required/>
           </div>
-          <!--<div class="input-row">
-            <label for="borrower">Borrower</label>
-            <input type="text" name="borrower" id="borrower" required/>
-          </div>-->
           <div class="input-row">
             <label for="description">Description</label>
             <input type="description" name="description" id="description" />
           </div>
-          <!--<div class="input-row">
-            <label for="imgUrl">Image Url</label>
-            <input type="Text" name="imgUrl" id="imgUrl" />-->
+          <div class="input-row">
+            <label for="imageUrl">Image Url</label>
+            <input type="Text" name="imageUrl" id="imageUrl" />
+          </div>
+            <div class="input-row">
+              <label for="tutorialUrl">Tutorial Url</label>
+              <input type="Text" name="tutorialUrl" id="tutorialUrl" />
+            </div>
           <button type="submit" name="action">Submit</button>
         </form>
-        <!--<table>
-          <thead>
-            <tr>
-              <th>Toolname</th>
-              <th>Borrower</th>
-              <th>Description</th>
-              <th>Image</th>
-    
-              <th></th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>-->
     </div>
     
 </div>

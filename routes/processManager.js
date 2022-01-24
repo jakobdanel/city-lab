@@ -21,8 +21,8 @@ router.get('/:id', async (req, res, next) => {
 router.post('/create', async (req, res, next) => {
     let response = await processManager.createProcess(req.body);
     response.ok ? res.status(200) : res.status(500);
-    res.json(response);
-    res.send();
+    res.redirect('/Taskscheduler');
+    res.send(response);
     });
 
 router.get('/delete/:id', async (req, res, next) => {

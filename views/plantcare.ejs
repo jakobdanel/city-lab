@@ -38,21 +38,12 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Add+
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Task</a></li>
+                      <li><a href="task">Task</a></li>
                       <li><a href="#">Plant</a></li>
                       <li><a href="#">Tool</a></li>
                       <li><a href="#">Process</a></li>
                      </ul>
                   </li>
-                <!--<li class="nav-item">
-                    <a class="nav-link rounded" href="Taskscheduler">Taskscheduler</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active rounded" href="plantcare">Plantcare</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active rounded" href="tools">Tools</a>
-                </li>-->
                 <li class="nav-item">
                     <a class="nav-link active rounded" href="signin">Sign out</a>
                 </li>
@@ -64,7 +55,7 @@
 <div id="contentFrame" class="d-flex justify-content-center flex-wrap align-items-center p-5">
     <div id="textContent" class=" col col-lg-4 col-12 rounded text-center">
     <h1>Plants</h1>
-    <form>
+    <form action="/plantManager/create" method="post" role="form">
       <div class="input-row">
         <label for="plantName">Plant</label>
         <input type="text" name="plantName" id="plantName" required/>
