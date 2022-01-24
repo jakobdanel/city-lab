@@ -47,8 +47,8 @@
       </div>
   </nav>
     <!--Main Content-->
-<div id="contentFrame" class="d-flex justify-content-center flex-wrap align-items-center p-5">
-    <div id="textContent" class=" col col-lg-4 col-12 rounded text-center">
+<div id="contentFrame" class="d-flex justify-content-center flex-wrap p-5">
+    <div id="textContent" class=" col col-12 rounded text-center">
         <h3>Create a new Task</h3>
         <form action="/taskManager/create" method="post" role="form">
         <div class="form-group">
@@ -56,12 +56,16 @@
           <input type="text" class="form-control form-control-lg mb-3" name="taskName" id="taskName" required placeholder="Name of your task"/>
         </div>
         <div class="form-group">
-          <label for="taskType">Task Type</label>
-          <select class="form-control form-control-lg mb-3" name="taskType" id="taskType">
-            <option selected>What is this task about</option>
+          <label for="taskType">What is this task about</label>
+          <select class="form-control form-control-lg mb-3" name="taskType" id="taskType" onchange="javascript:fillTaskSubject(this.value)">
             <option value="Plant">Plants</option>
             <option value="Object">Objects</option>
             <option value="Process">Processes</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="taskSubject">Which element should the task cover</label>
+          <select class="form-control form-control-lg mb-3" name="taskSubject" id="taskSubject">
           </select>
         </div>
         <div class="form-group">
@@ -82,23 +86,9 @@
             <option selected>Who is supposed to do this task</option>
           </select>
         </div>
-        <script>
-          $.ajax({
-            url:"/users",
-            method: "GET",
-          }).done(function(res){
-            let users=res.data;
-            let select=document.getElementById("assignedTo")
-            for(i=0; i<users.length;i++){
-              var option = document.createElement("option");
-              option.text = users[i].username;
-              option.value=users[i].username;
-              select.add(option);
-            }
-            })
-        </script>
         <button type="submit" class="btn btn-dark mb-5" name="action">Submit</button>
     </form>
+    <script src="javascript/taskFormFunctions.js"></script>
     </div>
     
 </div>
