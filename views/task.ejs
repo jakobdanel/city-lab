@@ -35,7 +35,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-a " aria-labelledby="navbarDropdown">
                   <a class="dropdown-item dropdown-a" href="plantcare">Plant</a>
-                  <a class="dropdown-item dropdown-a" href="tools">Tool</a>
+                  <a class="dropdown-item dropdown-a" href="tools">Object</a>
                   <a class="dropdown-item dropdown-a" href="process">Process</a>
                   <a class="dropdown-item dropdown-a" href="task">Task</a>
                 </div>
@@ -52,11 +52,11 @@
         <h3>Create a new Task</h3>
         <form action="/taskManager/create" method="post" role="form">
         <div class="form-group">
-          <label for="taskName">Task name</label>
+          <label for="taskName">Name *</label>
           <input type="text" class="form-control form-control-lg mb-3" name="taskName" id="taskName" required placeholder="Name of your task"/>
         </div>
         <div class="form-group">
-          <label for="taskType">What is this task about</label>
+          <label for="taskType">What is this task about *</label>
           <select class="form-control form-control-lg mb-3" name="taskType" id="taskType" onchange="javascript:fillTaskSubject(this.value)">
             <option value="Plant">Plants</option>
             <option value="Object">Objects</option>
@@ -64,28 +64,29 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="taskSubject">Which element should the task cover</label>
+          <label for="taskSubject">Which element should the task cover *</label>
           <select class="form-control form-control-lg mb-3" name="taskSubject" id="taskSubject">
           </select>
         </div>
         <div class="form-group">
-          <label for="creator">Creator</label>
+          <label for="creator">Creator *</label>
           <input type="text" class="form-control form-control-lg mb-3" name="creator" id="creator" placeholder="Who created this task"/>
         </div>
         <div class="form-group">
-          <label for="details">Details</label>
+          <label for="details">Details *</label>
           <input type="text" class="form-control form-control-lg mb-3" name="details" id="details" placeholder="Further Details about the task"/>
         </div>
         <div class="form-group">
-          <label for="until">Until</label>
+          <label for="until">Until *</label>
           <input type="date" name="until" id="until" />
         </div>
         <div class="form-group">
-          <label for="assignedTo">Assignee</label>
+          <label for="assignedTo">Assignee *</label>
           <select class="form-control form-control-lg mb-3" name="assignedTo" id="assignedTo">
             <option selected>Who is supposed to do this task</option>
           </select>
         </div>
+        <p>Elements marked with * are mandatory for a successfull creation</p>
         <button type="submit" class="btn btn-dark mb-5" name="action">Submit</button>
     </form>
     <script src="javascript/taskFormFunctions.js"></script>

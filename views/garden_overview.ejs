@@ -28,25 +28,29 @@
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
+  
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="nav navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link rounded" href="garden_overview">Start</a>
+                    <a class="nav-link rounded active" href="garden_overview">Start</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link rounded" href="Taskscheduler">Taskscheduler</a>
+                  <a class="nav-link rounded" href="Taskscheduler">Schedule</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Add
+                  </a>
+                  <div class="dropdown-menu dropdown-a " aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item dropdown-a" href="plantcare">Plant</a>
+                    <a class="dropdown-item dropdown-a" href="tools">Object</a>
+                    <a class="dropdown-item dropdown-a" href="process">Process</a>
+                    <a class="dropdown-item dropdown-a" href="task">Task</a>
+                  </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active rounded" href="plantcare">Plantcare</a>
+                    <a class="nav-link rounded" href="signin">Sign out</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active rounded" href="tools">Tools</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active rounded" href="signin">Sign out</a>
-                </li>
-                
             </ul>
         </div>
     </nav>

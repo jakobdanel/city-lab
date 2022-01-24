@@ -8,6 +8,11 @@ function fillTaskTable(){
     for(i=0; i<tasks.length;i++){
       let row = table.insertRow();
         row.id = "row";
+      if(i%2==0){
+        row.setAttribute("class","teven");
+      }else{
+        row.setAttribute("class","todd");
+      }
       let name = row.insertCell();
         name.textContent = tasks[i].taskName;
       let type = row.insertCell();

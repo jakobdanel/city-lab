@@ -54,7 +54,18 @@ body {
   table th {
     border: solid 1px rgb(255, 255, 255);
     color:rgb(255, 255, 255);
+    padding: 5px;
   }
+thead{
+  background-color: #004241;
+}
+.teven{
+  background-color: #618b7b !important;
+  color:rgb(0, 0, 0) !important;
+}
+.todd{
+  background-color: #006664 !important;
+}
   label,
   input {
     display: block;
