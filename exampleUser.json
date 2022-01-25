@@ -1,0 +1,141 @@
+[{
+  "_id": {
+    "$oid": "61f002d11780ae5202afc5ff"
+  },
+  "username": "jdanel",
+  "firstName": "Jakob",
+  "lastName": "Danel",
+  "password": "$2a$10$RxTymLJ4fEl3Es0Zj78lKeRPiFxKcpG.mV.jT34FwxUxSHyMydqUW",
+  "email": "jdanel@uni-muenster.de",
+  "telefonNumber": "123456789",
+  "garden": [],
+  "tasks": [],
+  "presenceTime": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61f003031780ae5202afc601"
+  },
+  "username": "tbrand",
+  "firstName": "Tobias",
+  "lastName": "Brand",
+  "password": "$2a$10$dcHtz/FT4CasDbFpK5h46eaBUPrPsZev52xqjAKJTvyG2mFcF06rG",
+  "email": "tbrand@uni-muenster.de",
+  "telefonNumber": "123456789",
+  "garden": [],
+  "tasks": [],
+  "presenceTime": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61f003231780ae5202afc603"
+  },
+  "username": "ndaute",
+  "firstName": "Niklas",
+  "lastName": "Daute",
+  "password": "$2a$10$I91i05qokUTj8gdF7u9TYOaXa3Zclm6oJ1VF7OXqV4RpI9/C.9Fbi",
+  "email": "ndaute@uni-muenster.de",
+  "telefonNumber": "123456789",
+  "garden": [],
+  "tasks": [],
+  "presenceTime": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61f003441780ae5202afc605"
+  },
+  "username": "jhoping",
+  "firstName": "Jan",
+  "lastName": "Hoping",
+  "password": "$2a$10$Y3itcfDCzDahbnNY0tBa8eJfrg4BQJY07nK6306.o8vDAlzRt1Bqq",
+  "email": "jhoping@uni-muenster.de",
+  "telefonNumber": "123456789",
+  "garden": [],
+  "tasks": [],
+  "presenceTime": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61f003581780ae5202afc607"
+  },
+  "username": "lahlert",
+  "firstName": "Lukas",
+  "lastName": "Ahlert",
+  "password": "$2a$10$75BvJh5rIupO1Hx1ZPuJp.NYTEZEFEcxjAEmMMF/88Z1bTrP9eB4S",
+  "email": "lahlert@uni-muenster.de",
+  "telefonNumber": "123456789",
+  "garden": [],
+  "tasks": [],
+  "presenceTime": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61f003751780ae5202afc609"
+  },
+  "username": "jbiden",
+  "firstName": "Joe",
+  "lastName": "Biden",
+  "password": "$2a$10$R1.cvHECR2pKfqAhtvH/heP4Jw2eMp187MDVIcJdlaptAN9yrDqBC",
+  "email": "jbiden@uni-muenster.de",
+  "telefonNumber": "123456789",
+  "garden": [],
+  "tasks": [],
+  "presenceTime": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61f003b21780ae5202afc60b"
+  },
+  "username": "mmustermann",
+  "firstName": "Max",
+  "lastName": "Mustermann",
+  "password": "$2a$10$OAfO37Y10CeuIGHrRJVYMu9FbKZBKBxJ/QZs73eqhvN1x/O3S33Oq",
+  "email": "mmustermann@uni-muenster.de",
+  "telefonNumber": "123456789",
+  "garden": [],
+  "tasks": [],
+  "presenceTime": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61f003e51780ae5202afc60d"
+  },
+  "username": "tmueller",
+  "firstName": "Thomas",
+  "lastName": "Mueller",
+  "password": "$2a$10$jh3TcLX7mTBMCvyoCXf3uupC8RAuMJBjbLRXj/r.rU6QkzT0whQW6",
+  "email": "tmueller@uni-muenster.de",
+  "telefonNumber": "123456789",
+  "garden": [],
+  "tasks": [],
+  "presenceTime": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61f004291780ae5202afc60f"
+  },
+  "username": "amerkel",
+  "firstName": "Angela",
+  "lastName": "Merkel",
+  "password": "$2a$10$Qy3zlLt5bQ1dOgKfkZjh7uIzlW6po7vvWDTWV9lHCZYh/4i.vmfUu",
+  "email": "amerkel@uni-muenster.de",
+  "telefonNumber": "123456789",
+  "garden": [],
+  "tasks": [],
+  "presenceTime": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61f0045f1780ae5202afc611"
+  },
+  "username": "bbeutlin",
+  "firstName": "Bilbo",
+  "lastName": "Beutlin",
+  "password": "$2a$10$DySIfW2Li6t.WS1hEOi/lOpxDkwFZjpPHNmX0yFfFc7AVh0g1e8hm",
+  "email": "bbeutlin@uni-muenster.de",
+  "telefonNumber": "123456789",
+  "garden": [],
+  "tasks": [],
+  "presenceTime": [],
+  "__v": 0
+}]
