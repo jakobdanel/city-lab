@@ -12,7 +12,7 @@ let taskManager = require('./../database/taskManager');
 router.get('/', async function (req, res, next) {
     let response = await taskManager.getAllTask();
     response.ok ? res.status(200) : res.status(500);
-    res.send(response);
+    res.json(response);
 });
 
 /**
@@ -22,7 +22,6 @@ router.get('/:id', async function (req, res, next) {
     let response = await taskManager.getOneTask(req.params.id);
     response.ok ? res.status(200) : res.status(500);
     res.json(ressponse);
-    res.send();
 })
 /**
  * Create a new entry to the task manager database
@@ -54,6 +53,5 @@ router.post('/modify', async (req, res, next) => {
     let response = await taskManager.modifyTask(req.body);
     response.ok? res.status(200):res.status(500);
     res.json(response);
-    res.send();
 });
 module.exports = router;

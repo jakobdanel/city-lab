@@ -9,7 +9,6 @@ router.get('/',async function(req,res, next){
   let response = await plantManager.getAllPlants();
   response.ok ? res.status(200) : res.status(500);
   res.json(response);
-  res.send();
 })
 
 /**
@@ -19,18 +18,15 @@ router.get('/:id',async function(req,res, next){
   let response = await plantManager.getOnePlant(req.params.id);
   response.ok ? res.status(200) : res.status(500);
   res.json(response);
-  res.send();
 })
 
 /**
  * Create a new entry in the plants collection
  */
 router.post('/create',async function(req,res, next){
-  console.log(req.body)
   let response = await plantManager.createPlant(req.body);
   response.ok ? res.status(200) : res.status(500);
   res.redirect('/Taskscheduler');
-  res.send(response);
 })
 
 /**
@@ -40,7 +36,6 @@ router.delete('/delete/:id',async function(req,res,next){
   let response = await plantManager.deleteOnePlant(req.params.id);
   response.ok? res.status(200):res.status(500);
   res.json(response);
-  res.send();
 })
 
 /**
@@ -50,6 +45,5 @@ router.post('/modify', async (req, res, next) => {
   let response = await plantManager.modifyPlant(req.body);
   response.ok? res.status(200):res.status(500);
   res.json(response);
-  res.send();
 });
 module.exports = router;
