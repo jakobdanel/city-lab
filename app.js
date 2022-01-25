@@ -7,6 +7,7 @@ var bodyParser = require('body-parser')
 const MongoClient = require('mongodb').MongoClient
 const assert = require('assert')
 const port = 3000;
+const jwt = require('jsonwebtoken');
 
 const url = 'mongodb://localhost:27017'
 const client = new MongoClient(url)
@@ -26,12 +27,13 @@ var plantManagerRouter = require('./routes/plantManager');
 var objectManagerRouter = require('./routes/objectManager');
 var apiRouter = require('./routes/api');
 
+let SECRET_TOKEN = process.env.JWT_SECRET_TOKEN;
 
 var app = express();
 //connect to mongodb
 mongoose.connect('mongodb://localhost:27017/easyGardenDB');
 //Jan added
-mongoose.Promise=global.Promise;
+mongoose.Promise = global.Promise;
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -43,47 +45,86 @@ app.set('view engine', 'pug');
 app.set('views', './views')
 app.set('view engine', 'ejs')
 
-app.get('/index',(req,res)=>{
-  res.render('garden_overview')
+function validateCookie(request,response, successFunction) {
+  let cookies = request.headers?.cookie;
+  console.log("Cookies: " + cookies);
+  if (typeof cookies !== 'undefined') {
+    let cookie = cookies.split('=')[1]
+    console.log('cookie:', cookie)
+    jwt.verify(cookie, SECRET_TOKEN, (err, decoded) => {
+      if (err) {
+        response.render('signin')
+      } else {
+        successFunction(decoded)
+        return;
+      }
+    })
+  } else {
+    console.log('no cookie')
+    response.render('signin')
+  }
+}
+
+app.get('/index', (req, res) => {
+  validateCookie(req,res, (decoded) => {
+    res.render('garden_overview')
+  })
 })
-app.get('/',(req,res)=>{
-  res.render('garden_overview')
+
+app.get('/', (req, res) => {
+  validateCookie(req,res, (decoded) => {
+    res.render('garden_overview')
+  })
 })
 
 //Taskscheduler
-app.get('/Taskscheduler',(req,res)=>{
-    res.render('Taskscheduler')
+app.get('/Taskscheduler', (req, res) => {
+  validateCookie(req,res, (decoded) => {
+    res.render('TaskScheduler');
+  })
 })
 //gardenoverview
-app.get('/garden_overview',(req,res)=>{
-  res.render('garden_overview')
+app.get('/garden_overview', (req, res) => {
+  validateCookie(req,res, (decoded) => {
+    res.render('garden_overview')
+  })
 })
 //task
-app.get('/task',(req,res)=>{
-  res.render('task')
+app.get('/task', (req, res) => {
+  validateCookie(req,res, (decoded) => {
+    res.render('task')
+  })
 })
 //tools
-app.get('/tools',(req,res)=>{
-  res.render('tools')
+app.get('/tools', (req, res) => {
+  validateCookie(req,res, (decoded) => {
+    res.render('tools')
+  })
 })
 //process
-app.get('/process',(req,res)=>{
-  res.render('process')
+app.get('/process', (req, res) => {
+  validateCookie(req,res, (decoded) => {
+    res.render('process')
+  })
 })
 //plantcare
-app.get('/plantcare',(req,res)=>{
-  res.render('plantcare')
+app.get('/plantcare', (req, res) => {
+  validateCookie(req,res, (decoded) => {
+    res.render('plantcare')
+  })
 })
 //signin
-app.get('/signin',(req,res)=>{
+app.get('/signin', (req, res) => {
   res.render('signin')
 })
 //email_popup
-app.get('/email_popup',(req,res)=>{
-  res.render('email_popup')
+app.get('/email_popup', (req, res) => {
+  validateCookie(req,res, (decoded) => {
+    res.render('email_popup')
+  })
 })
 //Impressum
-app.get('/Impressum',(req,res)=>{
+app.get('/Impressum', (req, res) => {
   res.render('Impressum')
 })
 //end jan
@@ -103,9 +144,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/taskManager', taskManagerRouter);
-app.use('/plantManager',plantManagerRouter);
-app.use('/processManager',processManagerRouter);
-app.use('/objectManager',objectManagerRouter);
+app.use('/plantManager', plantManagerRouter);
+app.use('/processManager', processManagerRouter);
+app.use('/objectManager', objectManagerRouter);
 app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler

@@ -59,17 +59,25 @@ router.post('/register', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    const {username, password} = req.body;
+    const {
+        username,
+        password
+    } = req.body;
+    console.log(username, password);
 
-    const user = await userModel.findOne({username: username}).lean();
-    if(!user) {
-        res.status(400).json({
+    const user = await userModel.findOne({
+        username: username
+    }).lean();
+    console.log(!user);
+    if (!user) {
+        res.status(400).send({
             ok: false,
-            message: "User or password is incorrect"
+            message: "Username or password is incorrect"
         });
+        return;
     }
-    if(await bcrypt.compare(password, user.password)){
-        return res.status(200).json({
+    if (await bcrypt.compare(password, user.password)) {
+        return res.status(200).send({
             ok: true,
             data: {
                 token: jwt.sign({
@@ -78,14 +86,38 @@ router.post('/login', async (req, res) => {
                 }, SECRET_TOKEN, {
                     expiresIn: '1h'
                 })
-            }    
-    });
+            }
+        });
     }
-    res.status(400).json({
+    res.status(400).send({
         ok: false,
         message: "User or password is incorrect"
     });
 });
+
+router.get('/verify', async (req, res, next) => {
+    const token = req.headers['cookie']?.split('=')[1];
+    if (typeof token === 'undefined') {
+        res.status(400).send({
+            ok: false,
+            message: "No token provided"
+        })
+    } else {
+        jwt.verify(token, SECRET_TOKEN, (err, decoded) => {
+            if (err) {
+                res.status(401).send({
+                    ok: false,
+                    message: "Token is invalid"
+                })
+            } else {
+                res.status(200).send({
+                    ok: true,
+                    data: decoded
+                })
+            }
+        })
+    }
+})
 user = {
     "username": "test",
     "firstName": "te",
