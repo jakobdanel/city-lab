@@ -47,10 +47,10 @@ app.set('view engine', 'ejs')
 
 function validateCookie(request,response, successFunction) {
   let cookies = request.headers?.cookie;
-  console.log("Cookies: " + cookies);
+  //console.log("Cookies: " + cookies);
   if (typeof cookies !== 'undefined') {
     let cookie = cookies.split('=')[1]
-    console.log('cookie:', cookie)
+    // console.log('cookie:', cookie)
     jwt.verify(cookie, SECRET_TOKEN, (err, decoded) => {
       if (err) {
         response.render('signin')
@@ -119,10 +119,9 @@ app.get('/signin', (req, res) => {
 })
 //email_popup
 app.get('/email_popup', (req, res) => {
-  validateCookie(req,res, (decoded) => {
     res.render('email_popup')
   })
-})
+
 //Impressum
 app.get('/Impressum', (req, res) => {
   res.render('Impressum')
