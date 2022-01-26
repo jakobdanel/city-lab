@@ -8,6 +8,7 @@ const MongoClient = require('mongodb').MongoClient
 const assert = require('assert')
 const port = 3000;
 const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
 
 const url = 'mongodb://localhost:27017'
 const client = new MongoClient(url)
@@ -138,7 +139,57 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//nodemailer start
+app.post('/email_popup', (req, res) => {
+  const output = `
+    <p>You have a new contact request</p> 
+    <ul>  
+      <li>Prename: ${req.body.name}</li>
+      <li>Name: ${req.body.company}</li>
+      <li>Email: ${req.body.email}</li>
+      <li>Phone: ${req.body.phone}</li>
+    </ul>
+    <h3>Message</h3>
+    <p>${req.body.message}</p>
+  `;
 
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+  // host: 'smtp.gmail.com',
+  // port: 587,
+  service: 'gmail',
+    secure: false, // true for 465, false for other ports
+    auth: {
+        user: 'urbangardeningwwu@gmail.com', // generated ethereal user
+        pass: ''  // generated ethereal password
+    },
+    tls:{
+      rejectUnauthorized:false
+    }
+  });
+
+  // setup email data with unicode symbols
+  let mailOptions = {
+     // from: '"Nodemailer Contact" <urbangardeningwwu@gmail.com>', // sender address
+      from: 'urbangardeningwwu@gmail.com', // sender address
+      to: 'ContactUrbangardeningwwu@gmail.com', // list of receivers
+      subject: 'Node Contact Request', // Subject line
+      text: 'Hello world?', // plain text body
+      html: output // html body
+  };
+  //error message
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          return console.log(error);
+      }
+      console.log('Message sent: %s', info.messageId);   
+      console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+
+      res.render('email_popup', {msg:'Email has been sent'}); //contact
+  });
+  });
+  //nodemailer end
 //add Routes from line 18-20...
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
