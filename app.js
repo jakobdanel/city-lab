@@ -29,7 +29,7 @@ var objectManagerRouter = require('./routes/objectManager');
 var apiRouter = require('./routes/api');
 
 let SECRET_TOKEN = process.env.JWT_SECRET_TOKEN;
-
+let emailpassword = process.env.emailpassword_env;
 var app = express();
 //connect to mongodb
 mongoose.connect('mongodb://localhost:27017/easyGardenDB');
@@ -161,7 +161,7 @@ app.post('/email_popup', (req, res) => {
     secure: false, // true for 465, false for other ports
     auth: {
         user: 'urbangardeningwwu@gmail.com', // generated ethereal user
-        pass: ''  // generated ethereal password
+        pass: emailpassword  // generated ethereal password
     },
     tls:{
       rejectUnauthorized:false
@@ -173,7 +173,7 @@ app.post('/email_popup', (req, res) => {
      // from: '"Nodemailer Contact" <urbangardeningwwu@gmail.com>', // sender address
       from: 'urbangardeningwwu@gmail.com', // sender address
       to: 'ContactUrbangardeningwwu@gmail.com', // list of receivers
-      subject: 'Node Contact Request', // Subject line
+      subject: 'Contact Request', // Subject line
       text: 'Hello world?', // plain text body
       html: output // html body
   };
