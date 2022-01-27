@@ -127,6 +127,11 @@ app.get('/email_popup', (req, res) => {
 app.get('/Impressum', (req, res) => {
   res.render('Impressum')
 })
+
+//registration
+app.get('/registration', (req, res) => {
+  res.render('registration')
+})
 //end jan
 app.use(logger('dev'));
 app.use(express.json({
