@@ -132,6 +132,11 @@ app.get('/Impressum', (req, res) => {
 app.get('/registration', (req, res) => {
   res.render('registration')
 })
+
+//about
+app.get('/about-not-logged-in', (req, res) => {
+  res.render('about-not-logged-in')
+})
 //end jan
 app.use(logger('dev'));
 app.use(express.json({
