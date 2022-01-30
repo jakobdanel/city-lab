@@ -11,7 +11,7 @@ router.get('/', async function (req, res, next) {
   let response = await userManager.getAllUsers();
     response.ok ? res.status(200) : res.status(500);
     res.json(response);
-    res.send();
+    //res.send();
 });
 
 /**
