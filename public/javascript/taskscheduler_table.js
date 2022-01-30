@@ -17,6 +17,16 @@ function fillTaskTable(){
         name.textContent = tasks[i].taskName;
       let type = row.insertCell();
         type.textContent = tasks[i].taskType;
+      if(tasks[i].taskType=="Plant"){
+        let type = row.insertCell();
+        type.textContent = tasks[i].plant;
+      }else if(tasks[i].taskType=="Object"){
+        let type = row.insertCell();
+        type.textContent = tasks[i].object;
+      }else if(tasks[i].taskType=="Process"){
+        let type = row.insertCell();
+        type.textContent = tasks[i].process;
+      }
       let creator = row.insertCell();
         creator.textContent = tasks[i].creator;
       let details = row.insertCell();

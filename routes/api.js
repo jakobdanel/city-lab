@@ -69,14 +69,18 @@ router.post('/login', async (req, res) => {
         username: username
     }).lean();
     console.log(!user);
+    console.log(user);
     if (!user) {
+        console.log("No User")
         res.status(400).send({
             ok: false,
             message: "Username or password is incorrect"
         });
         return;
     }
+    console.log(password, user.password)
     if (await bcrypt.compare(password, user.password)) {
+        console.log("User")
         return res.status(200).send({
             ok: true,
             data: {

@@ -14,9 +14,9 @@ function fillUsers(){
         })
 }
 function fillTaskSubject(value){
-    let subjectSelect=document.getElementById("taskSubject");
+    let subjectSelect=document.getElementById("taskData");
     if(value=="Plant"){
-        $("#taskSubject").empty();
+        $("#taskData").empty();
         $.ajax({
             url:"/plantManager",
             method: "GET",
@@ -30,7 +30,7 @@ function fillTaskSubject(value){
             }
         })
     }else if(value=="Object"){
-        $("#taskSubject").empty();
+        $("#taskData").empty();
         $.ajax({
             url:"/objectManager",
             method: "GET",
@@ -44,7 +44,7 @@ function fillTaskSubject(value){
             }
         })
     }else if(value=="Process"){
-        $("#taskSubject").empty();
+        $("#taskData").empty();
         $.ajax({
             url:"/processManager",
             method: "GET",
