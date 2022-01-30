@@ -1,5 +1,5 @@
 
-#startmap {
+#mapdiv {
   width: 600px; 
   height: 600px;
   display: inline-block;
@@ -8,7 +8,7 @@
 }
 
   @media screen and (max-width: 1560px) {
-    #startmap {
+    #startdiv {
         width: 450px; 
         height: 450px;
     }
@@ -16,7 +16,7 @@
   
   
   @media screen and (max-width: 767px) {
-      #startmap {
+      #startdiv {
         width: 300px; 
         height: 300px;
         box-shadow: none;
