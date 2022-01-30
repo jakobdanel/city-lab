@@ -14,9 +14,9 @@ function fillUsers(){
         })
 }
 function fillTaskSubject(value){
-    let subjectSelect=document.getElementById("taskData");
+    let subjectSelect=document.getElementById("taskElement");
     if(value=="Plant"){
-        $("#taskData").empty();
+        $("#taskElement").empty();
         $.ajax({
             url:"/plantManager",
             method: "GET",
@@ -30,7 +30,7 @@ function fillTaskSubject(value){
             }
         })
     }else if(value=="Object"){
-        $("#taskData").empty();
+        $("#taskElement").empty();
         $.ajax({
             url:"/objectManager",
             method: "GET",
@@ -44,7 +44,7 @@ function fillTaskSubject(value){
             }
         })
     }else if(value=="Process"){
-        $("#taskData").empty();
+        $("#taskElement").empty();
         $.ajax({
             url:"/processManager",
             method: "GET",
@@ -59,5 +59,16 @@ function fillTaskSubject(value){
         })
     }
 }
+function fillCreator(){
+    let creator = document.getElementById("creator");
+    let response = fetch('/api/verify').then(response => {
+    if (response.ok) {
+        response.json().then(data => {
+            creator.value = data.data.username;
+        }).catch(error => console.log(error));
+    }
+    }).catch(error => console.log(error));
+}
 fillUsers();
+fillCreator();
 fillTaskSubject("Plant");

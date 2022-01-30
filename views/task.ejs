@@ -70,22 +70,21 @@
           </div>
           <div class="form-group">
             <label for="taskType">What is this task about *</label>
-            <select class="form-control form-control-lg mb-3" name="taskType" id="taskType"
-              onchange="javascript:fillTaskSubject(this.value)">
+            <select class="form-control form-control-lg mb-3" name="taskType" id="taskType" onchange="javascript:fillTaskSubject(this.value)">
               <option value="Plant">Plants</option>
               <option value="Object">Objects</option>
               <option value="Process">Processes</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="taskData">Which element should the task cover *</label>
-            <select class="form-control form-control-lg mb-3" name="taskData" id="taskData">
+            <label for="taskElement">Which element should the task cover *</label>
+            <select class="form-control form-control-lg mb-3" name="taskElement" id="taskElement">
             </select>
           </div>
           <div class="form-group">
             <label for="creator">Creator *</label>
             <input type="text" class="form-control form-control-lg mb-3" name="creator" id="creator"
-              placeholder="Who created this task" />
+              placeholder="Who created this task" readonly="true"/>
           </div>
           <div class="form-group">
             <label for="details">Details *</label>
@@ -120,7 +119,7 @@
       </p>
     </div>
     <div id="copyrightText" class="footer-copyright">
-      <p>© 2021 Urban Gardening Project </p>
+      <p>© 2022 Urban Gardening Project </p>
     </div>
   </footer>
 

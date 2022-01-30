@@ -9,7 +9,6 @@ router.get('/',async function(req,res, next){
   let response = await objectManager.getAllObjects();
   response.ok ? res.status(200) : res.status(500);
   res.json(response);
-  res.send();
 })
 
 /**
@@ -19,7 +18,6 @@ router.get('/:id',async function(req,res, next){
   let response = await objectManager.getOneObject(req.params.id);
   response.ok ? res.status(200) : res.status(500);
   res.json(response);
-  res.send();
 })
 
 /**

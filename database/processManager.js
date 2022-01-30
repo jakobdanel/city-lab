@@ -39,7 +39,7 @@ async function getAllProcesses() {
  */
 async function getOneProcess(id) {
     try {
-        let result = await Process.findById(id);
+        let result = await Process.findOne({'name':id});
         return {
             ok: true,
             data: result,

@@ -162,3 +162,39 @@ thead{
   border-color: rgba(163, 4, 4, 0.904);
   border-style: dashed;
 }
+.has-details {
+  position: relative;
+}
+
+.details {
+  position: absolute;
+  top: 0;
+  transform: translateY(10%) scale(0);
+  transition: transform 0.1s ease-in;
+  transform-origin: left;
+  display: inline;
+  background: white;
+  color: black;
+  z-index: 20;
+  min-width: 100%;
+  width: max-content;
+  padding: 1rem;
+  border: 1px solid black;
+  text-align: left;
+}
+
+.has-details:hover span {
+  transform: translateY(10%) scale(1);
+}
+.radio-btn-green{
+  border-color: #006664;
+  color: white !important;
+}
+.radio-btn-green:checked + label{
+  background-color: #006664 !important;
+  color: white !important;
+}
+.radio-btn-green:hover + label{
+  background-color: #90c7b2 !important;
+  color: #004241 !important;
+}

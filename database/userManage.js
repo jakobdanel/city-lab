@@ -67,6 +67,31 @@
      }
  }
  
+/**
+  * Getting the entry inside the databases collection Users with the given Object id. If there is no entry with this id the function will 
+  * return null 
+  * @param {mongoose.Schema.Type.ObjectID} id The id of the searched object.
+  * @returns The user object with the given id, if exists.
+  */
+ async function getUserToName(name) {
+    try {
+        let result = await User.findOne({'username':name}, 'username firstName lastName email telefonNumber');
+        return {
+            ok: true,
+            data: result,
+            message: "Successfull loaded"
+        }
+    } catch (error) {
+        return {
+            ok: false,
+            data: null,
+            message: "An error occured",
+            error,
+        }
+    }
+}
+
+
  /**
   * This function create a new User. It will validate if the input parameters are valid. 
   * The attributes garden, tasks and presenceTime will be initialized but not filled.
@@ -172,6 +197,7 @@
  module.exports = {
      getAllUsers,
      getOneUser,
+     getUserToName,
      createUser,
      deleteOneUser,
      modifyUser

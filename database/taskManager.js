@@ -76,28 +76,19 @@ async function getOneTask(id) {
  * users collection. Then it verify that the given user and modifier exist. If all criteria are validated the object will be stored in the task database.
  * 
  * TODO: Actual validation for until parameter, three ways: String in a specific format, unix timeStamp or DateTime object.
- * @param {{taskName:String,user: ObjectID,details:String,until:String,modifier:ObjectID}} taskData The data which be wanted to store in the DB.
+ * @param {{taskName:String,taskType: String, taskElement: String, creator: username,details:String,until:String,assignedTo:username}} taskData The data which be wanted to store in the DB.
  */
 async function createTask(taskData) {
-
+    console.log(taskData)
     let task = {
         taskName: taskData.taskName,
         taskType: taskData.taskType,
+        taskElement: taskData.taskElement,
         creator: taskData.creator,
         details: taskData.details,
         until: taskData.until,
         modifier: taskData.modifier,
         assignedTo: taskData.assignedTo
-    }
-    let taskType = task.taskType;
-    if (taskType == "Plant") {
-        task.plant = taskData.plant;
-    }
-    if (taskType == "Object") {
-        task.object = taskData.object;
-    }
-    if (taskType == "Plant") {
-        task.plant = taskData.plant;
     }
     try {
         await Task.create(task);
@@ -109,7 +100,7 @@ async function createTask(taskData) {
             error
         }
     }
-
+console.log("added")
     return {
         ok: true,
         data: task,

@@ -46,7 +46,7 @@
   */
  async function getOnePlant(id) {
      try {
-         let result = await Plant.findById(id);
+         let result = await Plant.findOne({'plantName': id});
          return {
              ok: true,
              data: result,

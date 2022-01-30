@@ -17,20 +17,11 @@ const taskSchema = new mongoose.Schema({
         enum: ["Plant", "Object", "Process"],
         required: true
     },
-    plant: {
+    taskElement: {
         // type: mongoose.SchemaTypes.ObjectId,
         // ref: "Plant"
-        type: String
-    },
-    object: {
-        // type: mongoose.SchemaTypes.ObjectId,
-        // ref: "Object"
-        type: String
-    },
-    process: {
-        // type: mongoose.SchemaTypes.ObjectId,
-        // ref: "Process"
-        type: String
+        type: String,
+        required:true
     },
     creator: {
         // type: mongoose.SchemaTypes.ObjectId,

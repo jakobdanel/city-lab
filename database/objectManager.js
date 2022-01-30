@@ -46,7 +46,7 @@
   */
  async function getOneObject(id) {
      try {
-         let result = await Object.findById(id);
+         let result = await Object.findOne({'objectName':id});
          return {
              ok: true,
              data: result,

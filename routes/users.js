@@ -15,13 +15,20 @@ router.get('/', async function (req, res, next) {
 });
 
 /**
- * Returning the entry in the task database with the given id. If there is no entry with these id, the response will return an error message.
+ * Returning the entry in the user database with the given id. If there is no entry with this id, the response will return an error message.
  */
  router.get('/:id', async function (req, res, next) {
   let response = await userManager.getOneUser(req.params.id);
   response.ok ? res.status(200) : res.status(500);
   res.json(ressponse);
-  res.send();
+})
+/**
+ * Returning the entry in the user database with the given name. If there is no entry with this name, the response will return an error message.
+ */
+ router.get('/name/:id', async function (req, res, next) {
+  let response = await userManager.getUserToName(req.params.id);
+  response.ok ? res.status(200) : res.status(500);
+  res.json(response);
 })
 
 /**

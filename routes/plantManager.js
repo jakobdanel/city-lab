@@ -15,9 +15,13 @@ router.get('/',async function(req,res, next){
  * Get one specific plant via its id
  */
 router.get('/:id',async function(req,res, next){
-  let response = await plantManager.getOnePlant(req.params.id);
-  response.ok ? res.status(200) : res.status(500);
-  res.json(response);
+  try{
+    let response = await plantManager.getOnePlant(req.params.id);
+    response.ok ? res.status(200) : res.status(500);
+    res.json(response);
+  }catch(e){
+    console.log(e)
+  }
 })
 
 /**
