@@ -47,23 +47,20 @@
             </div>
         </nav>
         <!--Main Content-->
-        <div id="contentFrame" class="d-flex justify-content-center flex-wrap align-items-center p-5">
-            <div id="textContent" class=" col col-lg-4 col-12 rounded text-center">
-                <br><br>
-                <br>
-                <br><br><bR>
-                <br>
-                <br>
-                <!-- login box            -->
-                <br>
-                <div class="loginbox">
-                    <h1>Login</h1>
-                    <form>
-                        <p>Username</p>
-                        <input id="input-username" type="text" name="" placeholder="Enter Username">
-                        <p>Password</p>
-                        <input id="input-password" type="password" name="" placeholder="Enter Password">
-                        <input id="input-submit" type="submit" name="" value="Login">
+        <div id="contentFrame" class="d-flex justify-content-center flex-wrap p-5 ">
+            <div id="textContent" class=" col col-lg-4 col-12 rounded text-center mb-lg-5  row align-items-center">
+                <div class="loginbox p-1 rounded  col col-12 mb-2 mr-2 p-2" style="width:fit-content;">
+                    <h2>Login</h2>
+                    <form class="col col-12">
+                        <div class="form-group">
+                            <label for="input-username" class="form-label">Username</label>
+                            <input id="input-username" type="text" class="form-control" name="" placeholder="Enter Username">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-password" class="form-label">Password</label>
+                            <input id="input-password" class ="form-control" type="password" name="" placeholder="Enter Password">
+                        </div>
+                        <input id="input-submit" type="submit" name="" value="Login" class="btn">
                         <p id="input-error" style="color: red;margin-right: 150px;"></p>
                         <!--popup for lost your password-->
 
@@ -77,26 +74,14 @@
                             onclick="window.open('email_popup','popup','width=600,height=600,scrollbars=no,resizable=no'); return false;">
                             Join a Community?
                         </a>
-
-
-
                     </form>
                 </div>
-                <br>
-                <br>
-
-                <div class="container">
-                    <div class="page-header">
-                        <br>
-
-                    </div>
-                    <!--<div id="startmap" style="width: 30%; height: 20%; position:fixed"></div>-->
-                </div>
             </div>
-            <div id="startmap" class="col col-lg-5 col-12 border border-dark rounded align-self-lg-end"></div>
+            <div class="col col-lg-2 col-0"></div>
+            <div id="startmap" class="col col-lg-6 col-12 border border-dark rounded align-self-lg-end mb-5"></div>
 
             <!--Static Text-->
-            <field type="staticText" align="left"
+            <field type="staticText" style="text-align:left;"
                 txt="This is just some simple static text with variable substitution in here: $myvariable."
                 id="staticText.text" />
         </div>
@@ -113,7 +98,7 @@
             </p>
         </div>
         <div id="copyrightText" class="footer-copyright">
-            <p>© 2021 Urban Gardening Project </p>
+            <p>© 2022 Urban Gardening Project </p>
         </div>
     </footer>
 

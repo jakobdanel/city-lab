@@ -24,7 +24,7 @@ body {
   width: 100%;
 }
 .btn-green{
-  background-color: #ffffff !important;
+  background-color: #006664 !important;
   color: white !important;
 }
   label {
@@ -78,16 +78,9 @@ thead{
 
 
 .loginbox{
-    width: 320px;
-    height: 420px;
     background: #004241 !important;
     color: #fff;
-    top:50%;
-    left:30%;
-    position: absolute;
-    transform: translate(-50%,-50%);
     box-sizing: border-box;
-    padding:70x 30px;
 }
 
 .avatar{
@@ -99,31 +92,6 @@ thead{
   left: calc(50%-50px);
 }
 
-.loginbox p{
-  margin: 0;
-  padding: 0;
-  font-weight: bold;
-
-}
-
-.loginbox input{
-  width:64%;
-  margin-bottom: 20px;
-
-}
-
-.loginbox input[type="text"], input[type="password"]
-{
-    border: none;
-    border-bottom: 1px solid #fff;
-    background: transparent;
-    outline: none;
-    height: 40px;
-    color: #fff;
-    font-size: 16px;
-
-}
-
 .loginbox input[type="submit"]
 {
     border: none;
@@ -132,9 +100,6 @@ thead{
     background: #8fcc00;
     color: #fff;
     font-size: 18px;
-    border-radius: 20px;
-
-
 }
 
 .loginbox input[type="submit"]:hover
@@ -197,4 +162,10 @@ thead{
 .radio-btn-green:hover + label{
   background-color: #90c7b2 !important;
   color: #004241 !important;
+}
+input[type="password"] {
+  background-color: white;
+}
+.bgText{
+  background-color: #0042418e;
 }

@@ -22,7 +22,7 @@
 </head>
 
 <body>
-<div id="main" class="container-fluid no-gutters">
+  <div id="main" class="container-fluid no-gutters">
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark  fixed-top p-1">
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,39 +59,40 @@
             </ul>
         </div>
     </nav>
-    <!--Main Content-->
-<!--<div id="contentFrame" class="d-flex justify-content-center flex-wrap align-items-center p-5">
-    <div id="textContent" class=" col col-lg-4 col-12 rounded text-center">-->
- 
-    <!--map-->
-    <div class="container">
-      <div class="page-header">
-          <br>
-          <br>
-          <br>
-        <h1>Garden Overview (Admin Page)</h1>
+    <div id="contentFrame" class="d-flex justify-content-center flex-wrap p-5 ">
+      <div id="textContent" class=" col col-lg-6 col-12 rounded text-center mb-lg-5  row align-items-center">
+        <div class="container text-left rounded bgText">
+            <h1>Garden Overview</h1>
+            <p>
+              <b>Looking for a garden near you?</b></br> This map displays existing gardens in your area. If you want to learn
+              more about a garden simply click on it, contact the responsible person or give them a visit. They will be
+              happy to see your support!</br></br>
+              <b>But since you are logged in know:</b></br>
+              Feel free to use our tool to the greatest extand possible and simplify your organization and workload distribution in your garden.</br>
+              But keep in mind to be respectful to other users and do not create chaos in the planning structure of your garden. </br>
+              For more information about guidelines, please contact your garden administrator.
+            </p>
+        </div>
       </div>
-      <div id="mapdiv" style="width: 60%; height: 60%; position:fixed"></div>
+      <div class="col col-lg-1 col-0"></div>
+      <div id="mapdiv" class="col col-lg-5 col-12 border border-dark rounded align-self-lg-end"></div>
+    
     </div>
   </div>
-  <div id="mapdiv" class="col col-lg-5 col-12 border border-dark rounded align-self-lg-end"></div>
-  
-</div>
-</div>
 
 <!--main end-->
 <!-- FOOTER-->
 <footer id="myFooter" class="row col col-12 d-flex flex-column align-items-left">
-    <div class="row col col-12 d-flex flex-column ">
-        <p><b>Links</b><br>
-            <a href="https://www.uni-muenster.de/de/">University</a><br>
-            <a href="https://github.com/jakobdanel/city-lab">GitHub Repository</a></br>
-            <a href="impressum">Contact</a>
-        </p>
-    </div>
-    <div id="copyrightText" class="footer-copyright">
-        <p>© 2021 Urban Gardening Project </p>
-    </div>
+  <div class="row col col-12 d-flex flex-column ">
+      <p><b>Links</b><br>
+          <a href="https://www.uni-muenster.de/de/">University</a><br>
+          <a href="https://github.com/jakobdanel/city-lab">GitHub Repository</a></br>
+          <a href="impressum">Contact</a>
+      </p>
+  </div>
+  <div id="copyrightText" class="footer-copyright">
+      <p>© 2022 Urban Gardening Project </p>
+  </div>
 </footer>
 
 <!-- JQUERY AND BOOTSTRAP JAVASCRIPT-->
