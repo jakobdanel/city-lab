@@ -1,0 +1,49 @@
+[{
+  "_id": {
+    "$oid": "61f6eff3f9a740bc8522281b"
+  },
+  "taskName": "harvest potatoes",
+  "taskType": "Plant",
+  "taskElement": "Potato",
+  "creator": "jho",
+  "details": [
+    "have fun"
+  ],
+  "until": {
+    "$date": "2022-02-02T00:00:00Z"
+  },
+  "assignedTo": "lahlert",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61f6f3e17caf2aeaa5fa24cc"
+  },
+  "taskName": "plowing soil",
+  "taskType": "Object",
+  "taskElement": "Shovel",
+  "creator": "jho",
+  "details": [
+    "from left to right"
+  ],
+  "until": {
+    "$date": "2022-02-04T00:00:00Z"
+  },
+  "assignedTo": "tbrand",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61f6f4607caf2aeaa5fa24d8"
+  },
+  "taskName": "Make Honey",
+  "taskType": "Process",
+  "taskElement": "harvest honey",
+  "creator": "jho",
+  "details": [
+    "As much as possible. I am hungry"
+  ],
+  "until": {
+    "$date": "2022-02-03T00:00:00Z"
+  },
+  "assignedTo": "lahlert",
+  "__v": 0
+}]

@@ -1,0 +1,10 @@
+[{
+  "_id": {
+    "$oid": "61f6f3737572d324fb4fea5c"
+  },
+  "name": "harvest honey",
+  "description": "Don't kill bees",
+  "imageUrl": "https://image.stern.de/8769832/t/DM/v3/w1440/r1/-/imker-mit-bienen.jpg",
+  "tutorialUrl": "https://www.yourbeestore.com/beekeeping-tutorials/",
+  "__v": 0
+}]
