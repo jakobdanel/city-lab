@@ -55,8 +55,10 @@ function fillTaskTable(res){
       }
       let name = row.insertCell();
         name.textContent = tasks[i].taskName;
+
       let type = row.insertCell();
         type.textContent = tasks[i].taskType;
+
       let elem = row.insertCell();
         elem.textContent = tasks[i].taskElement;
         elem.setAttribute("class", "has-details")
@@ -64,6 +66,7 @@ function fillTaskTable(res){
         detailsSpan.setAttribute("class", "details rounded")
         getInfoForObject(tasks[i].taskType, tasks[i].taskElement, detailsSpan);
         elem.appendChild(detailsSpan)
+
       let creator = row.insertCell();
         creator.textContent = tasks[i].creator;
         creator.setAttribute("class", "has-details")
@@ -71,10 +74,13 @@ function fillTaskTable(res){
         creatorSpan.setAttribute("class", "details rounded")
         getInfoForUser(creatorSpan, tasks[i].creator);
         creator.appendChild(creatorSpan)
+
       let details = row.insertCell();
         details.textContent = tasks[i].details;
+
       let until = row.insertCell();
-        until.textContent = tasks[i].until;
+        until.textContent = createDateString(tasks[i].until);
+
       let assignedTo = row.insertCell();
         assignedTo.textContent = tasks[i].assignedTo;
         assignedTo.setAttribute("class", "has-details")
@@ -196,4 +202,13 @@ function addHeadToTable(){
     let assignedTo = row.insertCell();
       assignedTo.textContent = "Assignee";
     let deleteTr = row.insertCell();
+}
+function createDateString(date){
+  var dateWithoutTime = date.split("T")[0]
+  var splitDate=dateWithoutTime.split("-");
+  var yyyy = splitDate[0];
+  var mm = splitDate[1];;
+  var dd = splitDate[2];;
+  today = dd + '.' + mm + '.' + yyyy;
+  return today
 }
