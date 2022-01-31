@@ -43,7 +43,7 @@ body {
   }
   table,
   form {
-    width: 500px;
+    /* width: 500px; */
     margin: 20px auto;
   }
   table {
@@ -168,4 +168,8 @@ input[type="password"] {
 }
 .bgText{
   background-color: #0042418e;
+}
+input[type="text"], select{
+  width:100%;
+  box-sizing: border-box;
 }

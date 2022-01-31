@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <div id="main" class="container-fluid no-gutters">
+  <div id="main" class="container-fluid no-gutters"  style="box-sizing: border-box;">
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark  fixed-top p-1">
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarContent"
@@ -58,8 +58,8 @@
       </div>
     </nav>
     <!--Main Content-->
-    <div id="contentFrame" class="d-flex justify-content-center flex-wrap p-5">
-      <div id="textContent" class=" col col-12 rounded text-center">
+    <div id="contentFrame" class="d-flex justify-content-center flex-wrap p-md-5">
+      <div id="textContent" class="container col col-12 col-md-7 rounded text-center mb-5">
         <h2>Add a new Object to the Database</h2>
         <form action="/objectManager/create" method="post" role="form">
           <div class="form-group">
