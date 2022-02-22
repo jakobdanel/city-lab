@@ -10,7 +10,8 @@ Repository for the City Lab Course in the winter semester 2021/22.
 <ol>
   <li>Existing gardening communities and their members.</li>
  <li>People who are interested in urban gardening. <li>
-<ol>
+</ol>
+  
 ## What do we want to achieve with our app?
 <ol>
  <li>We want to help gardening communities stay organized and to organize their workload more efficiently. </li>
