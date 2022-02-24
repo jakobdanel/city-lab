@@ -21,7 +21,7 @@ router.get('/', async function (req, res, next) {
 router.get('/:id', async function (req, res, next) {
     let response = await taskManager.getOneTask(req.params.id);
     response.ok ? res.status(200) : res.status(500);
-    res.json(ressponse);
+    res.json(response);
 })
 /**
  * Create a new entry to the task manager database

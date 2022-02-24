@@ -9,6 +9,7 @@ const assert = require('assert')
 const port = 3000;
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
+const swaggerUi = require('swagger-ui-express');
 
 const url = 'mongodb://localhost:27017'
 const client = new MongoClient(url)
@@ -208,6 +209,9 @@ app.use('/plantManager', plantManagerRouter);
 app.use('/processManager', processManagerRouter);
 app.use('/objectManager', objectManagerRouter);
 app.use('/api', apiRouter);
+
+let apiDocumentation = require('./apiDocumentation');
+app.use('/apiDocumentation', swaggerUi.serve, swaggerUi.setup(apiDocumentation));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

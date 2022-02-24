@@ -19,6 +19,19 @@ Repository for the City Lab Course in the winter semester 2021/22.
 + We want to give the possibility to learn about/ get in contact with/ join a community garden. 
 + We want to provide new/ inexperienced gardeners with helpful information. 
 
+## What are the main features of the App?
+
++ Get to know other community gardens via the map and find out how to reach them.
++ Create individual things such as plants, objects or processes to be able to create tasks from them.
++ Create tasks and assign tasks to other members of the garden.
++ Breathe life into the tasks with additional information such as expiry dates or links to further information.
++ View all tasks on an overview page.
++ Hover over entries in the table to get more detailed information.
++ Filter the tasks by those you have created or those that have been assigned to you.
++ Delete tasks when they have been completed.
+
+## API Documentation
+The documentation of the API can befound [here](http://localhost:3000/apiDocumentation/) (if the server is running).
 
 # License
 This software is distributed as an open source software under the ISC license. Users are allowed to edit, process and use our software,
