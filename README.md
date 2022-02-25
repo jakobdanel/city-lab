@@ -33,6 +33,13 @@ Repository for the City Lab Course in the winter semester 2021/22.
 ## API Documentation
 The documentation of the API can befound [here](http://localhost:3000/apiDocumentation/) (if the server is running).
 
+## Installation Guide
+
++ Step 0: You need to install Node.js and MongoDB on your device before you can install this application
++ Step 1: Download this repository
++ Step 2: Open cmd and navigate to the "city-lab"-folder
++ Step 3: Run "npm install" and "npm start" commands 
+
 # License
 This software is distributed as an open source software under the ISC license. Users are allowed to edit, process and use our software,
 as long as they refer to us via a copyright trademark.
