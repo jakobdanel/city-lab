@@ -44,6 +44,13 @@ function getFilteredTasks(mode){
 
 function fillTaskTable(res){
     let tasks=res;
+    tasks.sort(function(a,b){
+        if(a.until<b.until){
+          return -1;
+        }else if(a.until>b.until){
+          return 1;
+        }else return 0;
+      })
     let table=document.getElementById("taskTable")
     for(i=0; i<tasks.length;i++){
       let row = table.insertRow();

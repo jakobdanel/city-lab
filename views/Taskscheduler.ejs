@@ -30,10 +30,10 @@
             <a class="nav-link rounded" href="garden_overview">Start</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link rounded" href="Taskscheduler">Schedule</a>
+            <a class="nav-link active rounded" href="Taskscheduler">Schedule</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
               Add
             </a>
@@ -70,8 +70,8 @@
       <input type="radio" class="btn-check radio-btn-green" id="myCreaTasks" name="taskSwitch" value="mineCrea" onclick="getFilteredTasks('created')" autocomplete="off"/>
       <label class="btn btn-outline-dark" for="myCreaTasks" >Only list tasks ceated by me</label>
     </div>
-    <div style="overflow: hidden;">
-      <div style="overflow-y: scroll;">
+    <div>
+      <div id="tableDiv">
         <table id="taskTable" class="mb-5">
           <thead>
             <tr>
