@@ -3,7 +3,6 @@ Repository for the City Lab Course in the winter semester 2021/22.
 
 
 
-# Targetgroup
 
 ## Who will benefit from our app?
 
