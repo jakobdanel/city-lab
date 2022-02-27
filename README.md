@@ -1,9 +1,12 @@
 # city-lab
 Repository for the City Lab Course in the winter semester 2021/22. 
 
-
-
-
+## Contributors
++ [Niklas Daute](https://github.com/niiiiikd)
++ [Jan Hoping](https://github.com/Jan9669)
++ [Lukas Ahlert](https://github.com/LukasAhl)
++ [Tobias Brand](https://github.com/TobiasBrand-GI)
++ [Jakob Danel](https://github.com/jakobdanel)
 ## Who will benefit from our app?
 
 
