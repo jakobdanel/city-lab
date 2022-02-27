@@ -48,7 +48,7 @@ const gardens = {
       {
         "type": "Feature",
         "properties": {
-          "name": "Botanischer Gerten Münster",
+          "name": "Botanischer Garten Münster",
           "url": "https://www.uni-muenster.de/BotanischerGarten/",
           "adress": "Schlossgarten 3, 48149 Münster"
         },

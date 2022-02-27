@@ -1,0 +1,25 @@
+[{
+  "_id": {
+    "$oid": "61f6ed75ef86629c84ae1e62"
+  },
+  "plantName": "Potato",
+  "plantSpecies": "S. tuberosum",
+  "details": [
+    "delicious"
+  ],
+  "imgUrl": "https://i.redd.it/hsm2vowo20j71.jpg",
+  "dataUrl": "https://de.wikipedia.org/wiki/Kartoffel",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61f71cf299f57074d66b6415"
+  },
+  "plantName": "Sunflower",
+  "plantSpecies": "Asteraceae",
+  "details": [
+    "yellow"
+  ],
+  "imgUrl": "https://thumbs.dreamstime.com/b/sonnenblume-spezies-helianthus-annuus-erntelandschaft-andalusien-55040070.jpg",
+  "dataUrl": "https://de.wikipedia.org/wiki/Sunflower",
+  "__v": 0
+}]
