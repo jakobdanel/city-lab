@@ -1,3 +1,7 @@
+/**
+ * Selects which tasks are shown in schedule depending on filter selection
+ * @param {String} mode Which tasks should be shown (all, created, assigned)
+ */
 function getFilteredTasks(mode){
   let currUser="";
   let response = fetch('/api/verify').then(response => {
@@ -7,18 +11,21 @@ function getFilteredTasks(mode){
         }).catch(error => console.log(error));
     }
   }).catch(error => console.log(error));
+  // clear old table and create new
   $("#taskTable tr").remove(); 
       addHeadToTable();
+      // Get all tasks
   $.ajax({
     url:"/taskManager",
     method: "GET",
   }).done(function(res){
     let data=res.data;
+    // display all tasks
     if(mode==="all"){
       $("#taskTable tr").remove(); 
       addHeadToTable();
       fillTaskTable(data)
-    }else if(mode==="assigned"){
+    }else if(mode==="assigned"){ // display assigned tasks
       if(data.length!=0){
         let tasks = new Array();
         for(i=0; i<data.length;i++){
@@ -28,7 +35,7 @@ function getFilteredTasks(mode){
         }
         fillTaskTable(tasks)
       }else{return}
-    }else if(mode==="created"){
+    }else if(mode==="created"){ // display created tasks
       if(data.length!=0){
         let tasks = new Array();
         for(i=0; i<data.length;i++){
@@ -42,8 +49,13 @@ function getFilteredTasks(mode){
   })
 }
 
+/**
+ * Creates the schedule, each task is a new row with altering color scheme
+ * @param {*} res Array of task objects
+ */
 function fillTaskTable(res){
     let tasks=res;
+    // sort tasks via dates ascending
     tasks.sort(function(a,b){
         if(a.until<b.until){
           return -1;
@@ -52,14 +64,17 @@ function fillTaskTable(res){
         }else return 0;
       })
     let table=document.getElementById("taskTable")
+    // HTML DOM creation
     for(i=0; i<tasks.length;i++){
       let row = table.insertRow();
         row.id = "row";
+      // different background colors
       if(i%2==0){
         row.setAttribute("class","teven");
       }else{
         row.setAttribute("class","todd");
       }
+      // create different cells for task attributes
       let name = row.insertCell();
         name.textContent = tasks[i].taskName;
 
@@ -68,6 +83,7 @@ function fillTaskTable(res){
 
       let elem = row.insertCell();
         elem.textContent = tasks[i].taskElement;
+        // create onHover popup
         elem.setAttribute("class", "has-details")
         let detailsSpan = document.createElement("span");
         detailsSpan.setAttribute("class", "details rounded")
@@ -76,6 +92,7 @@ function fillTaskTable(res){
 
       let creator = row.insertCell();
         creator.textContent = tasks[i].creator;
+        // create onHover popup
         creator.setAttribute("class", "has-details")
         let creatorSpan = document.createElement("span");
         creatorSpan.setAttribute("class", "details rounded")
@@ -90,12 +107,14 @@ function fillTaskTable(res){
 
       let assignedTo = row.insertCell();
         assignedTo.textContent = tasks[i].assignedTo;
+        // create onHover popup
         assignedTo.setAttribute("class", "has-details")
         let assignSpan = document.createElement("span");
         assignSpan.setAttribute("class", "details rounded")
         getInfoForUser(assignSpan, tasks[i].assignedTo);
         assignedTo.appendChild(assignSpan)
 
+      // create delete button
       let deleteTr = row.insertCell();
 
       let deleteDiv= document.createElement("div");
@@ -108,6 +127,7 @@ function fillTaskTable(res){
       binImg.setAttribute("class","deleteImage");
       deleteTr.appendChild(binImg);
 
+      // invisible id saver for delete action
       let idSaver=row.insertCell();
       idSaver.textContent=tasks[i]._id;
       idSaver.id="taskId"+i
@@ -116,6 +136,10 @@ function fillTaskTable(res){
   }
 getFilteredTasks("all");
 
+/**
+ * Delete ne task from schedule and drop it out of database
+ * @param {*} id 
+ */
 function deleteTaskFromTable(id){
   let taskId=document.getElementById("taskId"+id);
   let table=document.getElementById("taskTable");
@@ -130,6 +154,12 @@ function deleteTaskFromTable(id){
   })
 }
 
+/**
+ * Gets all info for one specific item from database and creates a html span element which will be a onHover popup
+ * @param {*} type 
+ * @param {*} name 
+ * @param {*} span 
+ */
 function getInfoForObject(type, name, span){
   if(type==="Plant"){
     $.ajax({
@@ -138,6 +168,7 @@ function getInfoForObject(type, name, span){
     }).done(function(res){
       let imageHTML="";
       let dataHTML="";
+      // set specific elements for plants
       if(res.data.imgUrl!=""){
         imageHTML='</br><a href="'+res.data.imgUrl+'">Picture of the Plant</a>'
       }
@@ -153,6 +184,7 @@ function getInfoForObject(type, name, span){
       method: "GET",
     }).done(function(res){
       let imageHTML="";
+      // set specific elements for objects
       if(res.data.imageUrl!=""){
         imageHTML='</br><a href="'+res.data.imgUrl+'">Picture of the Object</a>'
       }
@@ -167,6 +199,7 @@ function getInfoForObject(type, name, span){
       console.log(res)
       imageHTML="";
       tutorialHTML="";
+      // set specific elements for processes
       if(res.data.imageUrl!=""){
         imageHTML='</br><a href="'+res.data.imageUrl+'">Picture of the Process</a>'
       }
@@ -178,7 +211,11 @@ function getInfoForObject(type, name, span){
     })
   }
 }
-
+/**
+ * Gets all info for one specific user from database and creates a html span element which will be a onHover popup
+ * @param {*} span 
+ * @param {*} name 
+ */
 function getInfoForUser(span, name){
   $.ajax({
     url:"/users/name/"+name,
@@ -189,6 +226,9 @@ function getInfoForUser(span, name){
   })
 }
 
+/**
+ * creates a table head element wit a specific desgin 
+ */
 function addHeadToTable(){
   let table=document.getElementById("taskTable")
   let header=table.createTHead();
@@ -210,6 +250,12 @@ function addHeadToTable(){
       assignedTo.textContent = "Assignee";
     let deleteTr = row.insertCell();
 }
+
+/**
+ * Restructures a date string into "dd.mm.yyyy" format and returns it
+ * @param {*} date 
+ * @returns 
+ */
 function createDateString(date){
   var dateWithoutTime = date.split("T")[0]
   var splitDate=dateWithoutTime.split("-");

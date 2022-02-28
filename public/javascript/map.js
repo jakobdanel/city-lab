@@ -42,6 +42,9 @@ map.on('draw:created', function(e) {
 
 });
 
+/**
+ * Add static gardens to leaflet map
+ */
 const gardens = {
     "type": "FeatureCollection",
     "features": [

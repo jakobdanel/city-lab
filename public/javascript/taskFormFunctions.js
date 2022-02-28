@@ -1,3 +1,6 @@
+/**
+ * Fills the dropdown select for the assignees on the task creation page
+ */
 function fillUsers(){
     $.ajax({
         url:"/users",
@@ -13,8 +16,14 @@ function fillUsers(){
         }
         })
 }
+
+/**
+ * Fills the dropdown select for the items on the task creation page
+ * @param {*} value Which type of item from the task
+ */
 function fillTaskSubject(value){
     let subjectSelect=document.getElementById("taskElement");
+    // If type is a plant, get all plants from database
     if(value=="Plant"){
         $("#taskElement").empty();
         $.ajax({
@@ -29,6 +38,7 @@ function fillTaskSubject(value){
               subjectSelect.add(option);
             }
         })
+        //If type is an object, get all objects from database
     }else if(value=="Object"){
         $("#taskElement").empty();
         $.ajax({
@@ -43,6 +53,7 @@ function fillTaskSubject(value){
             subjectSelect.add(option);
             }
         })
+        // if type is a process, get all processes from database
     }else if(value=="Process"){
         $("#taskElement").empty();
         $.ajax({
@@ -59,6 +70,9 @@ function fillTaskSubject(value){
         })
     }
 }
+/**
+ * Automatically fills the creator based on the logged in user
+ */
 function fillCreator(){
     let creator = document.getElementById("creator");
     let response = fetch('/api/verify').then(response => {
